@@ -1,0 +1,89 @@
+{
+  "menuList": [{
+    "menuId":1,
+    "menuNameCn":"基础",
+    "menuNameEn":"Basic",
+    "children":[{
+        "menuId":3,
+        "menuNameCn":"布局",
+        "menuNameEn":"Layout",
+        "children":[],
+        "url":"/webMain"
+      },{
+        "menuId":3,
+        "menuNameCn":"布局容器",
+        "menuNameEn":"Container",
+        "children":[],
+        "url":"/login"
+      },{
+        "menuId":3,
+        "menuNameCn":"色彩",
+        "menuNameEn":"Color",
+        "children":[],
+        "url":"/login"
+      },{
+        "menuId":3,
+        "menuNameCn":"字体",
+        "menuNameEn":"Typography",
+        "children":[],
+        "url":"/login"
+      },{
+        "menuId":3,
+        "menuNameCn":"图标",
+        "menuNameEn":"Icon",
+        "children":[],
+        "url":"/login"
+      },{
+        "menuId":3,
+        "menuNameCn":"图标",
+        "menuNameEn":"Icon",
+        "children":[],
+        "url":"/login"
+      }],
+    "url":""
+  },{
+    "menuId":1,
+    "menuNameCn":"组件",
+    "menuNameEn":"Components",
+    "children":[{
+        "menuId":2,
+        "menuNameCn":"菜单二",
+        "menuNameEn":"菜单二",
+        "children":[],
+        "url":"/login"
+      },{
+        "menuId":3,
+        "menuNameCn":"菜单三",
+        "menuNameEn":"菜单三",
+        "children":[],
+        "url":"/webMain"
+      }],
+    "url":""
+  },{
+    "menuId":4,
+    "menuNameCn":"菜单4",
+    "menuNameEn":"菜单4",
+    "children":[],
+    "url":"/login"
+  },{
+    "menuId":5,
+    "menuNameCn":"菜单5",
+    "menuNameEn":"菜单5",
+    "children":[],
+    "url":"/login"
+  }
+  ],
+  "userList": [{
+    "username": "admin",
+    "password": "123456"
+  },{
+    "username": "llp",
+    "password": "123456"
+  },{
+    "username": "123",
+    "password": "123456"
+  },{
+    "username": "sys",
+    "password": "123456"
+  }]
+}

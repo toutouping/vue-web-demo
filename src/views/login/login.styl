@@ -1,0 +1,259 @@
+.login {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: rgb(53, 152, 219);
+  background-position: left bottom; /* 规定背景图像的位置 */
+  // background-origin: content-box; /* 规定背景图片的定位区域 */
+  // background-clip:content-box; /* 规定背景的绘制区域 */
+  background-attachment: fixed; /* 设置背景图像是否固定或者随着页面的其余部分滚动 */
+  background-repeat: no-repeat;
+  background-size: cover;
+  &.bg0 {
+    background-image: url("./bg0_0.jpg");
+  }
+  &.bg1 {
+    background-color: rgb(53, 152, 219);
+    background-image: url("./bg0_1.jpg");
+  }
+  &.bg2 {
+    background-color: rgb(53, 152, 219);
+    background-image: url("./bg0_2.jpg");
+  }
+  .f-content {
+    // position: absolute;
+    // top: 0;
+    // right: 0;
+    // bottom: 0;
+    // text-align: center;
+    // margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding-top: 30px;
+    margin-left: -245px;
+    margin-top: -200px;
+    width: 36%;
+    transition: width 0.3s ease-out;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: right bottom;
+    box-shadow: 0px 0px 1px 0px #333;
+    @media (max-width: 1024px) and (min-width: 481px) {
+      width: 50%;
+      margin-left: -180px;
+      margin-top: -150px;
+    }
+
+    &.right-bg0 {
+      background-image: url("./bg1_0.png");
+    }
+    &.right-bg1 {
+      background-image: url("./bg1_1.png");
+    }
+    &.right-bg2 {
+      background-image: url("./bg1_2.png");
+    }
+    .detail {
+      margin: 0 auto;
+      width: 60%;
+      @media (max-width: 1024px) and (min-width: 481px) {
+        width: 70%;
+      }
+      .r-form {
+        // margin-top: 50%;
+        text-align: left;
+        .f-title {
+          position: relative;
+          height: 40px;
+          margin-bottom: 8px;
+          line-height: 40px;
+          font-size: 14px;
+          color: #fff;
+          .user {
+            display: inline-block;
+            font-weight: bold;
+          }
+          .lang {
+            position: absolute;
+            right: 0px;
+            display: inline-block;
+            &:hover {
+              cursor: pointer;
+            }
+            .down {
+              margin-left: 3px;
+            }
+            .lang-list {
+              position: absolute;
+              right: 0;
+              display: inline-block;
+              border: 1px solid #ddd;
+              background: #fff;
+              z-index: 1;
+              line-height: 1.5;
+              a {
+                display: block;
+                margin: -1px 0;
+                overflow: hidden;
+                word-wrap: normal;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                color: #333;
+                text-decoration: none;
+                padding: 12px 30px;
+                &:hover{
+                  color: #333;
+                  background: #f7f7f7;
+                  text-decoration: none;
+                }
+              }
+            }
+          }
+        }
+        .content-wrapper {
+          position: relative;
+          .arrow {
+            position: absolute;
+            left: 21px;
+            top: -7px;
+            border-right: 7px solid transparent;
+            border-left: 7px solid transparent;
+            border-bottom: 7px solid #fff;
+            display: inline-block;
+            transition: left 0.5s ease;
+          }
+          .f-input {
+            width: 100%;
+            background-color: rgba(255,255,255,0.9);
+            border-radius: 3px;
+            .icon {
+              float: left;
+              color: #ccc;
+              font-size: 18px;
+              transition: color ease-in 0.3s;
+              width: 45px;
+              height: 46px;
+              line-height: 46px;
+              text-align: center;
+              @media (max-width: 1440px) and (min-width: 481px) {
+                height: 40px;
+                line-height: 40px;
+              }
+            }
+            section {
+              border-left: 1px solid #fff;
+              border-right: 1px solid #fff;
+              border-bottom: 1px solid #e3e4e5;
+            }
+            .input-content {
+              .input-wrapper{
+                margin-left: 45px;
+              }
+              input {
+                background: none;
+                border: none;
+                outline: none;
+                padding: 5px 0;
+                width: 100%;
+                color: #555;
+                height: 36px;
+                line-height: 36px;
+                &:active{
+                    color: #777;
+                    border-color: #5bc0de;
+                }
+                @media (max-width: 1440px) and (min-width: 481px) {
+                  height: 30px;
+                  line-height: 30px;
+                }
+              }
+            }
+          }
+        }
+        .reme {
+          position: relative;
+          line-height: 44px;
+          height: 44px;
+          color: #fff;
+          font-size: 14px;
+          input {
+            position: absolute !important;
+            left: -9999px;
+            box-sizing: border-box;
+            padding: 0;
+          }
+          .saveUsername{
+            cursor: pointer;
+            .checkbox {
+              display: inline-block;
+              vertical-align: text-bottom;
+              background: url(./check.png) no-repeat;
+              width: 16px;
+              height: 16px;
+              margin: 1px 3px 0 0;
+              overflow: hidden;
+              &.checkbox-checked {
+                background: url(./checked.png) no-repeat;
+                &:hover {
+                  background: url(./check_hover.png) no-repeat;
+                }
+              }
+            }
+          }
+        }
+        .login-btn {
+          position: relative;
+          display: inline-block;
+          box-sizing: border-box;
+          width: 100%;
+          height: 46px;
+          background-color: #3598db;
+          color: rgb(255, 255, 255);
+          border-color: #136b9f;
+          line-height: 46px;
+          text-align: center;
+          text-decoration: none;
+          vertical-align: middle;
+          cursor: pointer;
+          font-size: 14px;
+          border: 1px solid transparent;
+          border-radius: 2px;
+          padding: 0 12px;
+          transition: all ease-out 0.3s;
+          &:hover{
+            color: #fff;
+            background-color: #136b9f;
+            border-color: #0f557f;
+          }
+          @media (max-width: 1440px) and (min-width: 481px) {
+            height: 40px;
+            line-height: 40px;
+            font-size: 14px;
+          }
+        }
+        .err-message {
+          font-size: 13px;
+          color: #ff0000;
+          height: auto;
+          min-height: 40px;
+          line-height: 2 !important;
+          margin-top: 8px;
+        }
+      }
+    }
+  }
+  .r-header {
+    padding-top: 30px;
+    padding-right: 50px;
+    font-size: 13px;
+    line-height: 36px;
+    text-align: right;
+    a {
+      color: #fff;
+      margin-left: 5px;
+    }
+  }
+}
+
