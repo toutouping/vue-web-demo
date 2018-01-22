@@ -1,0 +1,149 @@
+<template> <!-- 首页头部 -->
+  <header class="header">
+    <a href="" class="logo-content">
+      VUE 案例系统
+    </a>
+    <el-menu :default-active="activeSysIndex" class="sys-menu" mode="horizontal" @select="handleSelect">
+      <el-menu-item index="settingManage"></el-menu-item>
+      <el-menu-item index="userCenter"></el-menu-item>
+      <el-menu-item index="companyHelp"></el-menu-item>
+    </el-menu>
+    <!-- <span @click.stop="toggleMenu" class="toggle-menu icon-uniF0CAF9"></span> -->
+    <el-dropdown @command="userOperationFn" class="user">
+      <i class="user-icon"></i>
+      <el-dropdown-menu slot="dropdown">
+        <el-dropdown-item command="logout"></el-dropdown-item>
+        <el-dropdown-item command="setting"></el-dropdown-item>
+        <el-dropdown-item command="zh"></el-dropdown-item>
+        <el-dropdown-item command="en"></el-dropdown-item>
+        <el-dropdown-item command="help"></el-dropdown-item>
+      </el-dropdown-menu>
+    </el-dropdown>
+  </header>
+</template>
+
+<script type="text/ecmascript-6">
+  import store from 'src/vuex/store.js';
+
+  export default {
+    data () {
+      return {
+        activeSysIndex: 'setting',
+        showMenuFlag: true
+      };
+    },
+    created () {
+      this.$i18n.locale = localStorage.getItem('langulage') || 'zh';
+    },
+    methods: {
+      // toggleMenu () {
+      //   this.showMenuFlag = !this.showMenuFlag;
+      //   this.$emit('toggle-menu', this.showMenuFlag);
+      // },
+      handleSelect (key, keyPath) {
+        switch (key) {
+          case 'settingManage':
+            this.$router.push({path: '/sysSetting'});
+            break;
+          case 'userCenter':
+            this.$router.push({path: '/userCenter'});
+            break;
+          case 'companyHelp':
+            this.$router.push({path: '/companyHelp'});
+            break;
+        }
+      },
+      userOperationFn (command) {
+        switch (command) {
+          case 'help':
+            this._helpFn();
+            break;
+          case 'setting':
+            this._settingFn();
+            break;
+          case 'logout':
+            this._logoutFn();
+            break;
+          case 'cn':
+            localStorage.setItem('langulage', 'cn');
+            this.$router.go(0);
+            break;
+          case 'en':
+            localStorage.setItem('langulage', 'en');
+            this.$router.go(0);
+            break;
+        }
+      },
+      _settingFn () {
+        console.log('setting');
+      },
+      _helpFn () {
+        console.log('help');
+      },
+      _logoutFn () {
+        store.state.isLogin = false;
+        this.$router.push('/login');
+      }
+    }
+  };
+</script>
+
+<style lang="stylus" scoped>
+  .header {
+    position: fixed;
+    top: 0;
+    z-index: 1020;
+    box-sizing: border-box;
+    padding: 0 20px;
+    width: 100%;
+    height: 55px;
+    line-height: 55px;
+    background-color: #fff;
+    border-bottom: 1px solid #c2cfd6;
+    .logo-content {
+      font-size: 18px;
+      color: #36a2cd;
+      font-weight: bold;
+      .logo {
+        margin-right: 5px;
+      }
+    }
+    .sys-menu {
+      display: inline-block;
+      margin-left: 150px;
+      width: 300px;
+      height: 100%;
+      vertical-align: top;
+      border-bottom: 1px solid #c2cfd6;
+      li {
+        height: 100%;
+      }
+    }
+    .toggle-menu {
+      font-size: 18px;
+      color: #697f8a;
+      margin-left: 60px;
+      cursor: pointer;
+      &:hover {
+        color: #455056;
+      }
+    }
+    .user {
+      position: absolute;
+      top: 10px;
+      right: 30px;
+      width: 30px;
+      height: 30px;
+      .user-icon {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-image: url('./user-logo.png');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        cursor: pointer;
+      }
+    }
+  }
+</style>

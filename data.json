@@ -3,74 +3,44 @@
     "menuId":1,
     "menuNameCn":"基础",
     "menuNameEn":"Basic",
+    "iconCls": "el-icon-location",
     "children":[{
-        "menuId":3,
-        "menuNameCn":"布局",
-        "menuNameEn":"Layout",
+        "menuId":2,
+        "menuNameCn":"用户信息",
+        "menuNameEn":"User info",
         "children":[],
-        "url":"/webMain"
+        "comp":"userInfo",
+        "url":"/userInfo"
       },{
         "menuId":3,
         "menuNameCn":"布局容器",
         "menuNameEn":"Container",
         "children":[],
-        "url":"/login"
+        "comp":"userInfo",
+        "url":"/userInfo"
       },{
-        "menuId":3,
+        "menuId":4,
         "menuNameCn":"色彩",
         "menuNameEn":"Color",
         "children":[],
-        "url":"/login"
-      },{
-        "menuId":3,
-        "menuNameCn":"字体",
-        "menuNameEn":"Typography",
-        "children":[],
-        "url":"/login"
-      },{
-        "menuId":3,
-        "menuNameCn":"图标",
-        "menuNameEn":"Icon",
-        "children":[],
-        "url":"/login"
-      },{
-        "menuId":3,
-        "menuNameCn":"图标",
-        "menuNameEn":"Icon",
-        "children":[],
-        "url":"/login"
-      }],
-    "url":""
-  },{
-    "menuId":1,
-    "menuNameCn":"组件",
-    "menuNameEn":"Components",
-    "children":[{
-        "menuId":2,
-        "menuNameCn":"菜单二",
-        "menuNameEn":"菜单二",
-        "children":[],
-        "url":"/login"
-      },{
-        "menuId":3,
-        "menuNameCn":"菜单三",
-        "menuNameEn":"菜单三",
-        "children":[],
-        "url":"/webMain"
+        "comp":"userInfo",
+        "url":"/userInfo"
       }],
     "url":""
   },{
     "menuId":4,
-    "menuNameCn":"菜单4",
-    "menuNameEn":"菜单4",
+    "menuNameCn":"菜单二",
+    "menuNameEn":"Color",
     "children":[],
-    "url":"/login"
+    "comp":"userInfo",
+    "url":"/userInfo"
   },{
-    "menuId":5,
-    "menuNameCn":"菜单5",
-    "menuNameEn":"菜单5",
+    "menuId":4,
+    "menuNameCn":"菜单三",
+    "menuNameEn":"Color",
     "children":[],
-    "url":"/login"
+    "comp":"userInfo",
+    "url":"/userInfo"
   }
   ],
   "userList": [{

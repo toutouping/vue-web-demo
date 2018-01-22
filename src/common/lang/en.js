@@ -12,5 +12,15 @@ module.exports = {
     languageDesc: 'Language:English',
     emptyMsg: 'The user name or password can\'t be null',
     errMsg: 'The user name or password is wrong, or the login is restricted'
+  },
+  sysSetting: {
+    settingManage: 'System Manage',
+    userCenter: 'User center',
+    companyHelp: 'Company Help',
+    setting: 'setting',
+    logout: 'logout',
+    zh: '中文',
+    en: 'English',
+    help: '帮助中心'
   }
 };

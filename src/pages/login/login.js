@@ -1,4 +1,4 @@
-import store from 'common/js/store.js';
+import store from 'src/vuex/store.js';
 export default {
   data () {
     return {
@@ -7,9 +7,13 @@ export default {
       errMessage: '',
       rememberFlag: localStorage.getItem('rememberFlag'),
       langFlag: false,
-      currentLang: 'zh',
+      currentLang: '',
       random: Math.floor(Math.random(0, 1) * 3)
     };
+  },
+  created () {
+    this.$i18n.locale = localStorage.getItem('langulage') || 'zh';
+    this.currentLang = this.$i18n.locale;
   },
   methods: {
     loginFn () { // 登录事件
@@ -49,7 +53,7 @@ export default {
         if (this.$route.query.redirect) { // 跳转到指定链接
           this.$router.push({path: this.$route.query.redirect});
         } else {
-          this.$router.push({path: '/webMain'});
+          this.$router.push({path: '/sysSetting'});
         }
       } else {
         this.errMessage = this.$t('login.errMsg');

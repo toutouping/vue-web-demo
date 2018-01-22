@@ -1,9 +1,13 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import store from 'common/js/store.js';
-import NotFound from 'views/404.vue';
-import login from 'views/login/login.vue';
-import webMain from 'views/web-main/web-main.vue';
+import store from 'src/vuex/store.js';
+import NotFound from 'pages/404.vue';
+import login from 'pages/login/login.vue';
+import sysSetting from 'pages/sys-setting/sys-setting.vue';
+// import companyHelp from 'pages/company-help/company-help.vue';
+const companyHelp = resolve => require(['pages/company-help/company-help.vue'], resolve);
+// import userCenter from 'pages/user-center/user-center.vue';
+const userCenter = resolve => require(['pages/user-center/user-center.vue'], resolve);
 // 异步加载：const meetVipRate =  resolve => require(['views/meet-vip-rate/meet-vip-rate.vue'], resolve);
 
 Vue.use(Router);
@@ -16,12 +20,30 @@ const router = new Router({
       component: login/* ,hidden: true, // 自定义属性，在组件中可以通过 this.$route.hidden 获取值 */
     },
     {
-      path: '/webMain', /* 首页 */
-      component: webMain,
-      name: 'webMain',
+      path: '/sysSetting', /* 首页 */
+      component: sysSetting,
+      name: 'sysSetting',
       meta: {
         keepAlive: false, /* 用于在 <keep-alive> 中使用，判断是否需要进行缓存 */
         auth: true /* 自定义属性，用于判断是否进行校验,在router.beforeEach中使用 */
+      }
+    },
+    {
+      path: '/companyHelp',
+      component: companyHelp,
+      name: 'companyHelp',
+      meta: {
+        keepAlive: false,
+        auth: true
+      }
+    },
+    {
+      path: '/userCenter', /* 首页 */
+      component: userCenter,
+      name: 'userCenter',
+      meta: {
+        keepAlive: false,
+        auth: true
       }
     },
     {

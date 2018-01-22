@@ -4,6 +4,7 @@ import router from './router'; // 路由相关配置
 import VueI18n from 'vue-i18n';  // 国际化
 import Element from 'element-ui'; // 引入element-ui组件
 import VueProgressBar from 'vue-progressbar';  // 进度条
+import store from 'src/vuex/store.js';
 import 'element-ui/lib/theme-chalk/index.css'; // 引入element-ui的样式
 import enLocale from 'element-ui/lib/locale/lang/en';
 import zhLocale from 'element-ui/lib/locale/lang/zh-CN';
@@ -36,6 +37,7 @@ Vue.use(Element, {// 注册Element组件
 new Vue({
   router,
   i18n,
+  store,
   // el: '#app',
   // template: '<App/>',
   // components: {
