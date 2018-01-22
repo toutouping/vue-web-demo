@@ -13,7 +13,8 @@ module.exports = {
     emptyMsg: 'The user name or password can\'t be null',
     errMsg: 'The user name or password is wrong, or the login is restricted'
   },
-  sysSetting: {
+  header: {
+    sysName: 'VUE CASE',
     settingManage: 'System Manage',
     userCenter: 'User center',
     companyHelp: 'Company Help',
@@ -22,5 +23,16 @@ module.exports = {
     zh: '中文',
     en: 'English',
     help: '帮助中心'
+  },
+  welcom: {
+    userTitle: 'user title',
+    account: 'account',
+    mail: 'mail:8767XXXqq.com',
+    mailManage: 'manageer',
+    nearLogin: 'near login 2018-12-12 16:22:22',
+    loginDetail: 'detail',
+    sysTitle: 'system title',
+    selfSearch: 'slef search',
+    support: 'suppport XXXX'
   }
 };

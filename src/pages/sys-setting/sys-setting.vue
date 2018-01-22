@@ -31,7 +31,8 @@
                   </el-submenu>
                   <el-menu-item v-if="!item.children.length > 0" @click="addTab(item)" :index="index + ''">
                     <i :class="item.iconCls"></i>
-                    {{ item.menuNameCn }}
+                        <template v-if="lang === 'zh'">{{item.menuNameCn}}</template>
+                        <template v-if="lang === 'en'">{{item.menuNameEn}}</template>
                   </el-menu-item>
               </template>
           </el-menu>
@@ -56,13 +57,13 @@
           closable
           @tab-remove="removeTab"
           @tab-click="clickTab">
-              <el-tab-pane
-                  v-for="(item, index) in getHomeTabs"
-                  :label="item.title"
-                  :name="item.name"
-                  :key="index">
-                  <component :is="item.component"></component>
-              </el-tab-pane>
+            <el-tab-pane
+                v-for="(item, index) in getHomeTabs"
+                :label="item.title"
+                :name="item.name"
+                :key="index">
+                <component :is="item.component"></component>
+            </el-tab-pane>
           </el-tabs>
         </transition>
         <div class="default-page"

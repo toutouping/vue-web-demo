@@ -2,41 +2,41 @@
   <div class="company-help">
     <section class="user-info">
       <div class="title">
-        <p>下午好，admin</p>
+        <p>{{$t('welcom.userTitle')}}</p>
       </div>
       <div class="info">
         <span class="logo"><img src="../../../common/img/user-logo.png"></span>
         <div class="info-right">
-          <p class="account">账号信息：</p>
-          <p class="mail">绑定邮箱信息：8767XXXqq.com<a>管理</a></p>
-          <p class="near-login">最近登录：2018年1月18日星期四下午4点28分9秒<a>详情</a></p>
+          <p class="account">{{$t('welcom.account')}}</p>
+          <p class="mail">{{$t('welcom.mail')}}<a>{{$t('welcom.mailManage')}}</a></p>
+          <p class="near-login">{{$t('welcom.nearLogin')}}<a>{{$t('welcom.loginDetail')}}</a></p>
         </div>
       </div>
     </section>
     <section class="introduction">
       <div class="title">
-        <p>系统功能介绍</p>
+        <p>{{$t('welcom.sysTitle')}}</p>
       </div>
       <ul class="intro">
         <li>
           <span class="icon-search"></span>
           <div class="intro-detail">
-            <p class="intro-title">自助查询</p>
-            <p>支持XXXXX，管理用户权限XXXX</p>
+            <p class="intro-title">{{$t('welcom.selfSearch')}}</p>
+            <p>{{$t('welcom.support')}}</p>
           </div>
         </li>
         <li>
           <span class="icon-search"></span>
           <div class="intro-detail">
-            <p class="intro-title">自助查询</p>
-            <p>支持XXXXX，管理用户权限XXXX</p>
+            <p class="intro-title">{{$t('welcom.selfSearch')}}</p>
+            <p>{{$t('welcom.support')}}</p>
           </div>
         </li>
         <li>
           <span class="icon-search"></span>
           <div class="intro-detail">
-            <p class="intro-title">自助查询</p>
-            <p>支持XXXXX，管理用户权限XXXX</p>
+            <p class="intro-title">{{$t('welcom.selfSearch')}}</p>
+            <p>{{$t('welcom.support')}}</p>
           </div>
         </li>
       </ul>

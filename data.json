@@ -13,34 +13,34 @@
         "url":"/userInfo"
       },{
         "menuId":3,
-        "menuNameCn":"布局容器",
-        "menuNameEn":"Container",
+        "menuNameCn":"系统信息",
+        "menuNameEn":"System Info",
         "children":[],
-        "comp":"userInfo",
-        "url":"/userInfo"
+        "comp":"systemInfo",
+        "url":"/systemInfo"
       },{
         "menuId":4,
         "menuNameCn":"色彩",
         "menuNameEn":"Color",
         "children":[],
-        "comp":"userInfo",
-        "url":"/userInfo"
+        "comp":"userInfo2",
+        "url":"/userInfo2"
       }],
     "url":""
   },{
-    "menuId":4,
+    "menuId":5,
     "menuNameCn":"菜单二",
-    "menuNameEn":"Color",
+    "menuNameEn":"Menu 2",
     "children":[],
-    "comp":"userInfo",
-    "url":"/userInfo"
+    "comp":"userInfo3",
+    "url":"/userInfo3"
   },{
-    "menuId":4,
+    "menuId":6,
     "menuNameCn":"菜单三",
-    "menuNameEn":"Color",
+    "menuNameEn":"Menu 3",
     "children":[],
-    "comp":"userInfo",
-    "url":"/userInfo"
+    "comp":"userInfo4",
+    "url":"/userInfo4"
   }
   ],
   "userList": [{

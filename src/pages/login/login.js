@@ -12,8 +12,11 @@ export default {
     };
   },
   created () {
-    this.$i18n.locale = localStorage.getItem('langulage') || 'zh';
-    this.currentLang = this.$i18n.locale;
+    let lang = localStorage.getItem('langulage') || 'zh';
+
+    this.$i18n.locale = lang;
+    store.state.lang = lang;
+    this.currentLang = lang;
   },
   methods: {
     loginFn () { // 登录事件
@@ -32,6 +35,7 @@ export default {
     changeLangFn (lang) { // 切换语言
       this.currentLang = lang;
       this.$i18n.locale = lang;
+      store.state.lang = lang;
     },
     keydownFn (event) {
       if (event.keyCode === 13) {

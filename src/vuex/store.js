@@ -7,6 +7,7 @@ Vue.use(Vuex);
 
 let state = {
   isLogin: true, // 判断是否已经登录,
+  lang: 'zh',
   homeCurrentTab: '0',
   currentTab: {},
   tabIndex: 0,
@@ -33,11 +34,13 @@ let mutations = {
 
     if (!hasThisTab) {
       let newTabName = state.tabIndex + '';
+      let menuName = state.lang === 'zh' ? menuNode.menuNameCn : menuNode.menuNameEn;
 
+      console.log(Vue.i18n);
       state.currentTab = {
         id: menuNode.menuId,
         name: newTabName,
-        title: menuNode.menuNameCn,
+        title: menuName,
         component: menuNode.comp,
         url: menuNode.url,
         timestamp: new Date().getTime()

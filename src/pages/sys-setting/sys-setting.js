@@ -38,6 +38,7 @@ export default {
   },
   components: {
     welcomePage,
-    userInfo: () => import('views/sys-setting/user-info/user-info.vue') // 异步组件
+    userInfo: () => import('views/sys-setting/user-info/user-info.vue'), // 异步组件
+    systemInfo: () => import('views/sys-setting/system-info/system-info.vue')
   }
 };

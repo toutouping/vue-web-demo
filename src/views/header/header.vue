@@ -1,22 +1,22 @@
 <template> <!-- 首页头部 -->
   <header class="header">
     <a href="" class="logo-content">
-      VUE 案例系统
+      {{$t('header.sysName')}}
     </a>
     <el-menu :default-active="activeSysIndex" class="sys-menu" mode="horizontal" @select="handleSelect">
-      <el-menu-item index="settingManage"></el-menu-item>
-      <el-menu-item index="userCenter"></el-menu-item>
-      <el-menu-item index="companyHelp"></el-menu-item>
+      <el-menu-item index="settingManage">{{$t('header.settingManage')}}</el-menu-item>
+      <el-menu-item index="userCenter">{{$t('header.userCenter')}}</el-menu-item>
+      <el-menu-item index="companyHelp">{{$t('header.companyHelp')}}</el-menu-item>
     </el-menu>
     <!-- <span @click.stop="toggleMenu" class="toggle-menu icon-uniF0CAF9"></span> -->
     <el-dropdown @command="userOperationFn" class="user">
       <i class="user-icon"></i>
       <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item command="logout"></el-dropdown-item>
-        <el-dropdown-item command="setting"></el-dropdown-item>
-        <el-dropdown-item command="zh"></el-dropdown-item>
-        <el-dropdown-item command="en"></el-dropdown-item>
-        <el-dropdown-item command="help"></el-dropdown-item>
+        <el-dropdown-item command="logout">{{$t('header.logout')}}</el-dropdown-item>
+        <el-dropdown-item command="setting">{{$t('header.setting')}}</el-dropdown-item>
+        <el-dropdown-item command="zh">{{$t('header.zh')}}</el-dropdown-item>
+        <el-dropdown-item command="en">{{$t('header.en')}}</el-dropdown-item>
+        <el-dropdown-item command="help">{{$t('header.help')}}</el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
   </header>
@@ -28,12 +28,15 @@
   export default {
     data () {
       return {
-        activeSysIndex: 'setting',
+        activeSysIndex: 'settingManage',
         showMenuFlag: true
       };
     },
     created () {
-      this.$i18n.locale = localStorage.getItem('langulage') || 'zh';
+      let lang = localStorage.getItem('langulage') || 'zh';
+
+      this.$i18n.locale = lang;
+      store.state.lang = lang;
     },
     methods: {
       // toggleMenu () {
@@ -64,12 +67,14 @@
           case 'logout':
             this._logoutFn();
             break;
-          case 'cn':
-            localStorage.setItem('langulage', 'cn');
+          case 'zh':
+            localStorage.setItem('langulage', 'zh');
+            store.state.lang = 'zh';
             this.$router.go(0);
             break;
           case 'en':
             localStorage.setItem('langulage', 'en');
+            store.state.lang = 'en';
             this.$router.go(0);
             break;
         }
@@ -111,7 +116,6 @@
     .sys-menu {
       display: inline-block;
       margin-left: 150px;
-      width: 300px;
       height: 100%;
       vertical-align: top;
       border-bottom: 1px solid #c2cfd6;
