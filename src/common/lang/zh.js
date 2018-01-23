@@ -1,7 +1,7 @@
 module.exports = {
   login: { // 登录界面
-    username: '用户名',
-    password: '密码',
+    username: 'admin',
+    password: '123456',
     loginBtn: '登录',
     userLogin: '用户登录',
     helpCenter: '帮助中心',
