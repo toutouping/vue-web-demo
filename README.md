@@ -28,7 +28,7 @@ vue 实现网页版前端框架搭建，只需在此基础上增加独立组件�
 
 > [vuex](https://vuex.vuejs.org/zh-cn/) 是一个专为 vue.js 应用程序开发的状态管理模式，简单来说Vuex就是管理数据的。
 
-> [Element](http://element-cn.eleme.io/#/zh-CN) http://element-cn.eleme.io/#/zh-CN。
+> [Element](http://element-cn.eleme.io/#/zh-CN) 一套为开发者、设计师和产品经理准备的基于 Vue 2.0 的桌面端组件库
 
 > [Vue-progressbar](http://hilongjw.github.io/vue-progressbar/) 进度条组件。
 
