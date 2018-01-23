@@ -34,11 +34,16 @@ export default {
     ...mapGetters([ // https://vuex.vuejs.org/zh-cn/getters.html
       'getHomeCurrentTab',
       'getHomeTabs'
-    ])
+    ]),
+    currentMenu () {
+      return store.state.homeCurrentTab;
+    }
   },
   components: {
     welcomePage,
-    userInfo: () => import('views/sys-setting/user-info/user-info.vue'), // 异步组件
-    systemInfo: () => import('views/sys-setting/system-info/system-info.vue')
+    baseManage: () => import('views/sys-setting/base-manage/base-manage.vue'),
+    withdraw: () => import('views/sys-setting/withdraw/withdraw.vue'),
+    schollInfo: () => import('views/sys-setting/scholl-info/scholl-info.vue') // 异步组件
+
   }
 };

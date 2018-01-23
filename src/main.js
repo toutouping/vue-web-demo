@@ -24,8 +24,14 @@ Vue.use(VueI18n); // 国际化
 const i18n = new VueI18n({
   locale: getLanguage(),
   messages: {
-    en: require('common/lang/en.js'),
-    zh: require('common/lang/zh.js')
+    en: {
+      ...require('common/lang/en.js'),
+      ...enLocale
+    },
+    zh: {
+      ...require('common/lang/zh.js'),
+      ...zhLocale
+    }
   }
 });
 

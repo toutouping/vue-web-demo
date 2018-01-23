@@ -11,7 +11,6 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 
 const appData = require('../data.json')
-const menuList = appData.menuList
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
@@ -30,7 +29,14 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         res.json({
           code: 0,
           message: 'success',
-          data: menuList
+          data: appData.menuList
+        });
+      });
+      app.post('/api/getSchoolList', function(req, res) {
+        res.json({
+          code: 0,
+          message: 'success',
+          data: appData.schoolList
         });
       });
     },

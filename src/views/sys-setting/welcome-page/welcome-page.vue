@@ -46,10 +46,11 @@
 
 <style lang="stylus" scoped>
   .company-help {
+    background: #e4e5e6;
     .user-info {
       font-size: 14px;
       background: #fafafa;
-      margin-bottom: 38px;
+      margin-bottom: 20px;
       .title {
         background: #f0f1f3;
         height: 36px;
@@ -65,8 +66,7 @@
         }
       }
       .info {
-        padding-top: 10px;
-        padding-left: 30px;
+        padding: 10px 0 10px 30px;
         .logo {
           display inline-block;
           width: 60px;
@@ -109,8 +109,7 @@
         }
       }
       .intro {
-        padding-top: 10px;
-        padding-left: 30px;
+        padding: 10px 0 10px 30px;
         li {
           padding: 10px;
           .icon-search {

@@ -5,7 +5,7 @@
     <transition name="aside-menu"><!-- 菜单 -->
       <el-aside v-show="showMenuFlag" class="aside-menu" width="200px">
           <el-menu
-            :default-active="$route.path"
+            :default-active="currentMenu"
             class="aside-el-menu-vertical"
             background-color="#545c64"
             text-color="#fff"
@@ -15,7 +15,7 @@
               <template
                   v-for="(item, index) in menuList"
                   v-if="!item.hidden">
-                  <el-submenu v-if="item.children.length > 0" :index="index + ''">
+                  <el-submenu v-if="item.children.length > 0" :index="item.menuId">
                       <template slot="title">
                           <i :class="item.iconCls"></i>
                           <template v-if="lang === 'zh'">{{item.menuNameCn}}</template>
@@ -24,12 +24,12 @@
                       <el-menu-item
                           v-for="(child, key) in item.children"
                           @click="addTab(child)"
-                          :key = "key" :index="child.url" v-if="!child.hidden">
+                          :key = "key" :index="child.menuId" v-if="!child.hidden">
                             <template v-if="lang === 'zh'">{{child.menuNameCn}}</template>
                             <template v-if="lang === 'en'">{{child.menuNameEn}}</template>
                           </el-menu-item>
                   </el-submenu>
-                  <el-menu-item v-if="!item.children.length > 0" @click="addTab(item)" :index="index + ''">
+                  <el-menu-item v-if="!item.children.length > 0" @click="addTab(item)" :index="item.menuId">
                     <i :class="item.iconCls"></i>
                         <template v-if="lang === 'zh'">{{item.menuNameCn}}</template>
                         <template v-if="lang === 'en'">{{item.menuNameEn}}</template>
@@ -61,7 +61,7 @@
                 v-for="(item, index) in getHomeTabs"
                 :label="item.title"
                 :name="item.name"
-                :key="index">
+                :key="item.id">
                 <component :is="item.component"></component>
             </el-tab-pane>
           </el-tabs>
