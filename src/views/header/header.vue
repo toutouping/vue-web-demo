@@ -87,7 +87,8 @@
       },
       _logoutFn () {
         store.state.isLogin = false;
-        this.$router.push('/login');
+        window.location.href = 'index.html';
+        // this.$router.push('/login');
       }
     }
   };
