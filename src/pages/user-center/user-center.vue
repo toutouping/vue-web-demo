@@ -1,5 +1,5 @@
 <template>
-    <p class="page-container">user-center</p>
+    <p class="page-container">user-center 待完善</p>
 </template>
 
 <style scoped>

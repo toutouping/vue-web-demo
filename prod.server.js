@@ -15,17 +15,22 @@ router.get('/', function (req, res, next) {
 app.use(router);
 
 var appData = require('./data.json');
-var userList = appData.userList;
-
 var apiRoutes = express.Router();
 
-apiRoutes.get('/userList', function (req, res) {
-	res.json({
-		errno: 0,
-		data: userList
-	});
+app.post('/getMenuList', function(req, res) {
+  res.json({
+    code: 0,
+    message: 'success',
+    data: appData.menuList
+  });
 });
-
+app.post('/getSchoolList', function(req, res) {
+  res.json({
+    code: 0,
+    message: 'success',
+    data: appData.schoolList
+  });
+});
 app.use('/api', apiRoutes);
 
 app.use(express.static('./dist'));

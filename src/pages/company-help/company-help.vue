@@ -1,5 +1,5 @@
 <template>
-    <p class="company-help">company-help</p>
+    <p class="company-help">company-help 待完善</p>
 </template>
 
 <style scoped>

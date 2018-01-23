@@ -42,6 +42,7 @@ export default {
   components: {
     welcomePage,
     baseManage: () => import('views/sys-setting/base-manage/base-manage.vue'),
+    runners: () => import('views/sys-setting/runners/runners.vue'),
     withdraw: () => import('views/sys-setting/withdraw/withdraw.vue'),
     schollInfo: () => import('views/sys-setting/scholl-info/scholl-info.vue') // 异步组件
 

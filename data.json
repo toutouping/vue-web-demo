@@ -32,11 +32,11 @@
   },{
     "menuId": "id-5",
     "menuNameCn":"跑腿人",
-    "menuNameEn":"Menu 3",
+    "menuNameEn":"Runners",
     "iconCls": "el-icon-location",
     "children":[],
-    "comp":"userInfo4",
-    "url":"/userInfo4"
+    "comp":"runners",
+    "url":"/runners"
   }
   ],
   "schoolList": [{

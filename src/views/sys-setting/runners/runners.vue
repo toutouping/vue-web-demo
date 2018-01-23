@@ -1,6 +1,6 @@
 <template>
-    <div class="withdraw">
-      withdraw 待完善
+    <div class="runners">
+      runners 待完善
     </div>
 </template>
 
@@ -14,7 +14,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  .withdraw {
+  .runners {
     padding: 20px;
     font-size: 20px;
     text-align: center;
