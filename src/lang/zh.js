@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   login: { // 登录界面
     username: 'admin',
     password: '123456',
