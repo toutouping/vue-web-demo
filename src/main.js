@@ -1,11 +1,12 @@
 import Vue from 'vue';
-import App from './App';
 import router from './router'; // 路由相关配置
-import Element from 'element-ui'; // 引入element-ui组件
 import VueProgressBar from 'vue-progressbar';  // 进度条
-import store from 'src/vuex/store.js';
 import i18n from 'src/lang'; // 国际化
+import Element from 'element-ui'; // 引入element-ui组件
 import 'element-ui/lib/theme-chalk/index.css'; // 引入element-ui的样式
+import store from 'src/vuex/store.js';
+import App from './App';
+
 import 'common/stylus/index.styl';
 
 Vue.config.productionTip = false;  // 关闭生产模式下给出的提示

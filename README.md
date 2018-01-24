@@ -81,9 +81,8 @@ npm test
 >│　　│　　├─ index.js // 共有配置文件  
 >│　　├─ router  
 >│　　│　　├─ index.js // 存放路由  
->│　　├─ views // 视图 （路由跳转的页面）  
->│　　├─ pages //子视图（嵌套）  
->│　　│　　├─ pages.md  
+>│　　├─ views // 视图  
+>│　　│　　├─ views.md  
 >│　　├─ vuex // 这一块将存放于common项目  
 >│　　│　　├─ index.js  
 >│　　│　　├─ actions  
