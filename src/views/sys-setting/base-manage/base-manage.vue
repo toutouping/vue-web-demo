@@ -70,7 +70,7 @@
     },
     created () {
       this.$Progress.start();
-      api.getSchoolList().then((res) => {
+      api.getSysSchoolList().then((res) => {
         this.schoolList = res.data;
         this.$Progress.finish();
       });

@@ -10,7 +10,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 
-const appData = require('../data.json')
+const syssetting = require('../data/data.json')
+const usercenter = require('../data/usercenter.json')
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
@@ -25,18 +26,32 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   // these devServer options should be customized in /config/index.js
   devServer: {
     before(app) {
-      app.post('/api/getMenuList', function(req, res) {
+      app.post('/api/syssetting/getMenuList', function(req, res) {
         res.json({
           code: 0,
           message: 'success',
-          data: appData.menuList
+          data: syssetting.menuList
         });
       });
-      app.post('/api/getSchoolList', function(req, res) {
+      app.post('/api/syssetting/getSchoolList', function(req, res) {
         res.json({
           code: 0,
           message: 'success',
-          data: appData.schoolList
+          data: syssetting.schoolList
+        });
+      });
+      app.post('/api/usercenter/getMenuList', function(req, res) {
+        res.json({
+          code: 0,
+          message: 'success',
+          data: usercenter.menuList
+        });
+      });
+      app.post('/api/usercenter/getSchoolList', function(req, res) {
+        res.json({
+          code: 0,
+          message: 'success',
+          data: usercenter.schoolList
         });
       });
     },

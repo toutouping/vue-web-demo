@@ -5,6 +5,7 @@ import i18n from 'src/lang'; // 国际化
 import Element from 'element-ui'; // 引入element-ui组件
 import 'element-ui/lib/theme-chalk/index.css'; // 引入element-ui的样式
 import store from 'src/vuex/store.js';
+import directive from 'src/directive'; // 引入自定义指令
 import App from './App';
 
 import 'common/stylus/index.styl';
@@ -16,7 +17,7 @@ Vue.use(VueProgressBar, { // 进度条
   failedColor: 'red',
   height: '2px'
 });
-
+Vue.use(directive);
 Vue.use(Element, {// 注册Element组件
   i18n: (key, value) => i18n.t(key, value)
 });

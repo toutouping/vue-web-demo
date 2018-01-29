@@ -4,11 +4,10 @@
       {{$t('header.sysName')}}
     </a>
     <el-menu :default-active="activeSysIndex" class="sys-menu" mode="horizontal" @select="handleSelect">
-      <el-menu-item index="settingManage">{{$t('header.settingManage')}}</el-menu-item>
+      <el-menu-item index="sysSetting">{{$t('header.settingManage')}}</el-menu-item>
       <el-menu-item index="userCenter">{{$t('header.userCenter')}}</el-menu-item>
       <el-menu-item index="companyHelp">{{$t('header.companyHelp')}}</el-menu-item>
     </el-menu>
-    <!-- <span @click.stop="toggleMenu" class="toggle-menu icon-uniF0CAF9"></span> -->
     <el-dropdown @command="userOperationFn" class="user">
       <i class="user-icon"></i>
       <el-dropdown-menu slot="dropdown">
@@ -28,7 +27,6 @@
   export default {
     data () {
       return {
-        activeSysIndex: 'settingManage',
         showMenuFlag: true
       };
     },
@@ -38,14 +36,15 @@
       this.$i18n.locale = lang;
       store.state.lang = lang;
     },
+    computed: {
+      activeSysIndex () {
+        return this.$route.path && this.$route.path.length > 1 ? this.$route.path.slice(1) : 'settingManage';
+      }
+    },
     methods: {
-      // toggleMenu () {
-      //   this.showMenuFlag = !this.showMenuFlag;
-      //   this.$emit('toggle-menu', this.showMenuFlag);
-      // },
       handleSelect (key, keyPath) {
         switch (key) {
-          case 'settingManage':
+          case 'sysSetting':
             this.$router.push({path: '/sysSetting'});
             break;
           case 'userCenter':

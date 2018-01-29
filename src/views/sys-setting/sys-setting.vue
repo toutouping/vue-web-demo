@@ -5,7 +5,7 @@
     <transition name="aside-menu"><!-- 菜单 -->
       <el-aside v-show="showMenuFlag" class="aside-menu" width="200px">
           <el-menu
-            :default-active="currentMenu"
+            :default-active="getSysHomeCurrentTab"
             class="aside-el-menu-vertical"
             background-color="#545c64"
             text-color="#fff"
@@ -23,13 +23,13 @@
                       </template>
                       <el-menu-item
                           v-for="(child, key) in item.children"
-                          @click="addTab(child)"
+                          @click="sysAddTab(child)"
                           :key = "key" :index="child.menuId" v-if="!child.hidden">
                             <template v-if="lang === 'zh'">{{child.menuNameCn}}</template>
                             <template v-if="lang === 'en'">{{child.menuNameEn}}</template>
                           </el-menu-item>
                   </el-submenu>
-                  <el-menu-item v-if="!item.children.length > 0" @click="addTab(item)" :index="item.menuId">
+                  <el-menu-item v-if="!item.children.length > 0" @click="sysAddTab(item)" :index="item.menuId">
                     <i :class="item.iconCls"></i>
                         <template v-if="lang === 'zh'">{{item.menuNameCn}}</template>
                         <template v-if="lang === 'en'">{{item.menuNameEn}}</template>
@@ -51,14 +51,14 @@
       <section class="home-content">
         <transition>
           <el-tabs
-          v-if="getHomeTabs.length > 0"
-          :value="getHomeCurrentTab"
+          v-if="getSysHomeTabs.length > 0"
+          :value="getSysHomeCurrentTab"
           type="card"
           closable
-          @tab-remove="removeTab"
-          @tab-click="clickTab">
+          @tab-remove="sysRemoveTab"
+          @tab-click="sysClickTab">
             <el-tab-pane
-                v-for="(item, index) in getHomeTabs"
+                v-for="(item, index) in getSysHomeTabs"
                 :label="item.title"
                 :name="item.name"
                 :key="item.id">
@@ -67,7 +67,7 @@
           </el-tabs>
         </transition>
         <div class="default-page"
-            v-if="getHomeTabs.length === 0">
+            v-if="getSysHomeTabs.length === 0">
             <welcome-page></welcome-page>
         </div>
       </section>

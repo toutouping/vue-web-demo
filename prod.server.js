@@ -14,23 +14,40 @@ router.get('/', function (req, res, next) {
 
 app.use(router);
 
-var appData = require('./data.json');
+var syssetting = require('./data/data.json');
+var usercenter = require('./data/usercenter.json');
 var apiRoutes = express.Router();
 
-app.post('/getMenuList', function(req, res) {
+
+app.post('/syssetting/getMenuList', function(req, res) {
   res.json({
     code: 0,
     message: 'success',
-    data: appData.menuList
+    data: syssetting.menuList
   });
 });
-app.post('/getSchoolList', function(req, res) {
+app.post('/syssetting/getSchoolList', function(req, res) {
   res.json({
     code: 0,
     message: 'success',
-    data: appData.schoolList
+    data: syssetting.schoolList
   });
 });
+app.post('/usercenter/getMenuList', function(req, res) {
+  res.json({
+    code: 0,
+    message: 'success',
+    data: usercenter.menuList
+  });
+});
+app.post('/usercenter/getSchoolList', function(req, res) {
+  res.json({
+    code: 0,
+    message: 'success',
+    data: usercenter.schoolList
+  });
+});
+
 app.use('/api', apiRoutes);
 
 app.use(express.static('./dist'));

@@ -33,17 +33,27 @@ service.interceptors.response.use(
     return Promise.reject(error);
   });
 
-export const getMenuList = params => {
-  return service.post('/getMenuList', params).then(res => res.data);
+export const getSysMenuList = params => {
+  return service.post('/syssetting/getMenuList', params).then(res => res.data);
 };
 
-export const getSchoolList = params => {
-  return service.post('/getSchoolList', params).then(res => res.data);
+export const getSysSchoolList = params => {
+  return service.post('/syssetting/getSchoolList', params).then(res => res.data);
+};
+
+export const getUserMenuList = params => {
+  return service.post('/usercenter/getMenuList', params).then(res => res.data);
+};
+
+export const getUserSchoolList = params => {
+  return service.post('/usercenter/getSchoolList', params).then(res => res.data);
 };
 
 let api = {
-  getMenuList,
-  getSchoolList
+  getSysMenuList,
+  getSysSchoolList,
+  getUserMenuList,
+  getUserSchoolList
 };
 
 export default api;
