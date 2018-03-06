@@ -2,12 +2,14 @@
 const utils = require('./utils')
 const webpack = require('webpack')
 const config = require('../config') // 配置文件
-const merge = require('webpack-merge')
+const merge = require('webpack-merge')// webpack-merge是一个可以合并数组和对象的插件
 const path = require('path')
 const baseWebpackConfig = require('./webpack.base.conf')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+// html-webpack-plugin用于将webpack编译打包后的产品文件注入到html模板中
+// 即自动在index.html里面加上<link>和<script>标签引用webpack打包后的文件
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')// friendly-errors-webpack-plugin用于更友好地输出webpack的警告、错误等信息
 const portfinder = require('portfinder')
 
 const syssetting = require('../data/data.json')
@@ -18,7 +20,7 @@ const PORT = process.env.PORT && Number(process.env.PORT)
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: { // 引入style的loader
-    rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
+    rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true }) // 通过传入一些配置来获取rules配置，此处传入了sourceMap: false,表示不生成sourceMap
   },
   // 最新的配置为 cheap-module-eval-source-map，虽然 cheap-module-eval-source-map更快，但它的定位不准确 所以，换成 eval-source-map
   devtool: config.dev.devtool,
@@ -79,9 +81,9 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   },
   plugins: [ // webpack 插件列表
     new webpack.DefinePlugin({ // 通过配置了DefinePlugin，那么这里面的标识就相当于全局变量，你的业务代码可以直接使用配置的标识
-      'process.env': require('../config/dev.env')
+      'process.env': require('../config/dev.env') // 当前环境为开发环境
     }),
-    new webpack.HotModuleReplacementPlugin(), // 模块热替换(HMR)交换, 添加, 或者删除模块, 同时应用持续运行, 不需要页面刷新.
+    new webpack.HotModuleReplacementPlugin(), //// 开启webpack热更新功能，模块热替换(HMR)交换, 添加, 或者删除模块, 同时应用持续运行, 不需要页面刷新.
     new webpack.NamedModulesPlugin(), // 当开启 HMR 的时候使用该插件会显示模块的相对路径，建议用于开发环境。 HMR shows correct file names in console on update.
     new webpack.NoEmitOnErrorsPlugin(), // webpack编译过程中出错的时候跳过报错阶段，不会阻塞编译，在编译结束后报错
     // https://github.com/ampedandwired/html-webpack-plugin
@@ -103,7 +105,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 
 module.exports = new Promise((resolve, reject) => {
   portfinder.basePort = process.env.PORT || config.dev.port
-  portfinder.getPort((err, port) => {
+  portfinder.getPort((err, port) => { // 在配置文件项中返回Promise了，这就允许你在配置中可以进行一些异步的写法
     if (err) {
       reject(err)
     } else {
