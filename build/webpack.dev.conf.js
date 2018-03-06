@@ -1,7 +1,7 @@
 'use strict'
 const utils = require('./utils')
 const webpack = require('webpack')
-const config = require('../config')
+const config = require('../config') // 配置文件
 const merge = require('webpack-merge')
 const path = require('path')
 const baseWebpackConfig = require('./webpack.base.conf')
@@ -17,15 +17,15 @@ const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
 const devWebpackConfig = merge(baseWebpackConfig, {
-  module: {
+  module: { // 引入style的loader
     rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
   },
-  // cheap-module-eval-source-map is faster for development
+  // 最新的配置为 cheap-module-eval-source-map，虽然 cheap-module-eval-source-map更快，但它的定位不准确 所以，换成 eval-source-map
   devtool: config.dev.devtool,
 
-  // these devServer options should be customized in /config/index.js
-  devServer: {
-    before(app) {
+  //以下devServer 的选项可以通过config中进行自定义配置
+  devServer: { // 配置行为选项
+    before(app) { // 提供在服务器内部所有其他中间件之前执行自定义中间件的能力。这可以用于定义自定义处理程序
       app.post('/api/syssetting/getMenuList', function(req, res) {
         res.json({
           code: 0,
@@ -55,43 +55,43 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         });
       });
     },
-    clientLogLevel: 'warning',
+    clientLogLevel: 'warning', // 设置消息显示的级别
     historyApiFallback: {
-      rewrites: [
+      rewrites: [ // 如果找不到对应的页面时,跳转到对应的页面
         { from: /.*/, to: path.posix.join(config.dev.assetsPublicPath, 'index.html') },
       ],
     },
-    hot: true,
-    contentBase: false, // since we use CopyWebpackPlugin.
-    compress: true,
-    host: HOST || config.dev.host,
-    port: PORT || config.dev.port,
-    open: config.dev.autoOpenBrowser,
-    overlay: config.dev.errorOverlay
+    hot: true, // 是否启用模块热替换属性
+    contentBase: false, // 禁用 contentBase // since we use CopyWebpackPlugin.
+    compress: true, // 服务都启用gzip 压缩
+    host: HOST || config.dev.host, // 指定使用一个 host。默认是 localhost。如果你希望服务器外部可访问，指定"0.0.0.0"
+    port: PORT || config.dev.port, // 指定要监听请求的端口号
+    open: config.dev.autoOpenBrowser, // 是否自动打开浏览器
+    overlay: config.dev.errorOverlay // 当设置为true时在浏览器当中全屏显示编译错误和警告。如果设置为false，则只显示编译错误的信息
       ? { warnings: false, errors: true }
       : false,
-    publicPath: config.dev.assetsPublicPath,
-    proxy: config.dev.proxyTable,
-    quiet: true, // necessary for FriendlyErrorsPlugin
-    watchOptions: {
+    publicPath: config.dev.assetsPublicPath, // 此路径下的打包文件可在浏览器中访问
+    proxy: config.dev.proxyTable, // 配置代理
+    quiet: true,// 启用 quiet 后，除了初始启动信息之外的任何内容都不会被打印到控制台。这也意味着来自 webpack 的错误或警告在控制台不可见。 // necessary for FriendlyErrorsPlugin 
+    watchOptions: { // 与监视文件相关的控制选项
       poll: config.dev.poll,
     }
   },
-  plugins: [
-    new webpack.DefinePlugin({
+  plugins: [ // webpack 插件列表
+    new webpack.DefinePlugin({ // 通过配置了DefinePlugin，那么这里面的标识就相当于全局变量，你的业务代码可以直接使用配置的标识
       'process.env': require('../config/dev.env')
     }),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
-    new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.HotModuleReplacementPlugin(), // 模块热替换(HMR)交换, 添加, 或者删除模块, 同时应用持续运行, 不需要页面刷新.
+    new webpack.NamedModulesPlugin(), // 当开启 HMR 的时候使用该插件会显示模块的相对路径，建议用于开发环境。 HMR shows correct file names in console on update.
+    new webpack.NoEmitOnErrorsPlugin(), // webpack编译过程中出错的时候跳过报错阶段，不会阻塞编译，在编译结束后报错
     // https://github.com/ampedandwired/html-webpack-plugin
-    new HtmlWebpackPlugin({
+    new HtmlWebpackPlugin({ // 自动将依赖注入html模板，并输出最终的html文件到目标文件夹
       filename: 'index.html',
       template: 'index.html',
       inject: true
     }),
     // copy custom static assets
-    new CopyWebpackPlugin([
+    new CopyWebpackPlugin([ // 把from内容全部拷贝到编译目录
       {
         from: path.resolve(__dirname, '../static'),
         to: config.dev.assetsSubDirectory,
@@ -112,7 +112,7 @@ module.exports = new Promise((resolve, reject) => {
       // add port to devServer config
       devWebpackConfig.devServer.port = port
 
-      // Add FriendlyErrorsPlugin
+      // 友好的错误提示 Add FriendlyErrorsPlugin
       devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({
         compilationSuccessInfo: {
           messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${port}`],

@@ -21,13 +21,13 @@ const createLintingRule = () => ({
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
-  entry: {
+  entry: { // 入口起点
     app: './src/main.js'
   },
-  output: {
+  output: { // output 属性告诉 webpack 在哪里输出它所创建的 bundles，以及如何命名这些文件
     path: config.build.assetsRoot,
-    filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production'
+    filename: '[name].js', // [name]代表了入口文件的名称 main
+    publicPath: process.env.NODE_ENV === 'production' // webpack-dev-server 也会默认从 publicPath 为基准，使用它来决定在哪个目录下启用服务，来访问 webpack 输出的文件。
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath
   },
@@ -43,12 +43,16 @@ module.exports = {
       'component': resolve('src/component')
     }
   },
+  /* loader 用于对模块的源代码进行转换。loader 可以使你在 import 或"加载"模块时预处理文件。
+  因此，loader 类似于其他构建工具中“任务(task)”，并提供了处理前端构建步骤的强大方法。loader 
+  可以将文件从不同的语言（如 TypeScript）转换为 JavaScript，或将内联图像转换为 data URL。loader 
+  甚至允许你直接在 JavaScript 模块中 import CSS文件！*/
   module: {
     rules: [
       ...(config.dev.useEslint ? [createLintingRule()] : []),
       {
-        test: /\.vue$/,
-        loader: 'vue-loader',
+        test: /\.vue$/, // test 属性，用于标识出应该被对应的 loader 进行转换的某个或某些文件
+        loader: 'vue-loader', // loader 可以将所有类型的文件转换为 webpack 能够处理的有效模块，然后你就可以利用 webpack 的打包能力，对它们进行处理
         options: vueLoaderConfig
       },
       {
