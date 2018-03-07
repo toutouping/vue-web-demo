@@ -18,12 +18,12 @@ describe('express mockjs test:', function () {
     app.use('/api', mock(path.join(process.cwd(), 'mocks')))
 
     // 以下为接口测试
-    it('example /example-data', function (done) {
-      request(app)
-        .get('/api/example-data')
-        .expect('Content-Type', /json/)
-        .expect(200, /^{"code":\d,"data":\{"list":\[\{"title"/, done);
-    });
+    // it('example /example-data', function (done) {
+    //   request(app)
+    //     .get('/api/example-data')
+    //     .expect('Content-Type', /json/)
+    //     .expect(200, /^{"code":\d,"data":\{"list":\[\{"title"/, done);
+    // });
   });
 });
 
