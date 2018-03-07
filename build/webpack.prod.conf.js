@@ -101,7 +101,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     // 分割公共 js 到独立的文件vendor中
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor', // 文件名
-      minChunks (module) { // 声明公共的模块来自node_modules文件夹
+      minChunks (module) { // 在一个模块被提取到公共chunk之前，它必须被最少minChunks个chunk所包含。（通俗的说就是一个模块至少要被minChunks个模块所引用，才能被提取到公共模块。）
         // any required modules inside node_modules are extracted to vendor
         // node_modules中的任何所需模块都提取到vendor
         return (
@@ -119,8 +119,10 @@ const webpackConfig = merge(baseWebpackConfig, {
      会导致vendor变化。vendor变化会导致其hash值变化。*/
     // 下面主要是将运行时代码提取到单独的manifest文件中，防止其影响vendor.js
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest',
-      minChunks: Infinity // 随着 入口chunk 越来越多，这个配置保证没其它的模块会打包进 公共chunk
+      name: 'manifest', // chunk的名称，如果这个chunk已经在entry中定义，该chunk会被直接提取；如果没有定义，则生成一个空的chunk来提取其他所有chunk的公共代码。
+      // filename：可以指定提取出的公共代码的文件名称，可以使用output配置项中文件名的占位符。未定义时使用name作为文件名。
+      // chunks：可以指定要提取公共模块的源chunks，指定的chunk必须是公共chunk的子模块，如果没有指定则使用所有entry中定义的入口chunk。
+      minChunks: Infinity // 如果指定了Infinity，则创建一个公共chunk，但是不包含任何模块，内部是一些webpack生成的runtime代码和chunk自身包含的模块（如果chunk存在的话）
     }),
     // This instance extracts shared chunks from code splitted chunks and bundles them
     // in a separate chunk, similar to the vendor chunk
