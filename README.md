@@ -69,6 +69,7 @@ npm run build --report
 >├─ package.json // 配置文件  
 >├─ README.md // 说明文件  
 >├─ build // webpack打包执行文件  
+>├─ mock  // mock前后端分离实现的数据接口  
 >├─ config // webpack打包配置文件  
 >├─ code-standards //编码规范  
 >├─ src   
