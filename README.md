@@ -12,9 +12,13 @@ vue 实现网页版前端框架搭建，只需在此基础上增加独立组件�
 
 > 路由切换菜单功能
 
+> 通过mock + express 实现前后端分离
+
 ## 效果展示
 
 ![demo](./present/demo0.png)
+
+![mock](./present/mock.png)
 
 
 ## 技术栈
@@ -34,6 +38,8 @@ vue 实现网页版前端框架搭建，只需在此基础上增加独立组件�
 
 > [vue-i18n](https://kazupon.github.io/vue-i18n/) 国际化资源管理组件。
 
+> [mock](http://mockjs.com/) mock是一个模拟数据生成器,旨在帮助前端独立于后端进行开发,帮助编写单元测试。
+
 
 > A Vue.js project
 
@@ -41,7 +47,10 @@ vue 实现网页版前端框架搭建，只需在此基础上增加独立组件�
 
 ``` bash
 # install dependencies
-npm install
+cnpm install
+
+# 启动前端数据接口（前后端分离）at localhost:8082/api/
+npm run mock
 
 # serve with hot reload at localhost:8080
 npm run dev
@@ -52,11 +61,6 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 
-# run unit tests
-npm run unit
-
-# run all tests
-npm test
 ```
 
 ## 项目组织架构

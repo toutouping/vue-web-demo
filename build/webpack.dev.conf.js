@@ -12,8 +12,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')// friendly-errors-webpack-plugin用于更友好地输出webpack的警告、错误等信息
 const portfinder = require('portfinder')
 
-const syssetting = require('../data/data.json')
-const usercenter = require('../data/usercenter.json')
+// const syssetting = require('../data/data.json')
+// const usercenter = require('../data/usercenter.json')
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
@@ -27,36 +27,36 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 
   //以下devServer 的选项可以通过config中进行自定义配置
   devServer: { // 配置行为选项
-    before(app) { // 提供在服务器内部所有其他中间件之前执行自定义中间件的能力。这可以用于定义自定义处理程序
-      app.post('/api/syssetting/getMenuList', function(req, res) {
-        res.json({
-          code: 0,
-          message: 'success',
-          data: syssetting.menuList
-        });
-      });
-      app.post('/api/syssetting/getSchoolList', function(req, res) {
-        res.json({
-          code: 0,
-          message: 'success',
-          data: syssetting.schoolList
-        });
-      });
-      app.post('/api/usercenter/getMenuList', function(req, res) {
-        res.json({
-          code: 0,
-          message: 'success',
-          data: usercenter.menuList
-        });
-      });
-      app.post('/api/usercenter/getSchoolList', function(req, res) {
-        res.json({
-          code: 0,
-          message: 'success',
-          data: usercenter.schoolList
-        });
-      });
-    },
+    // before(app) { // 提供在服务器内部所有其他中间件之前执行自定义中间件的能力。这可以用于定义自定义处理程序
+    //   app.post('/api/syssetting/getMenuList', function(req, res) {
+    //     res.json({
+    //       code: 0,
+    //       message: 'success',
+    //       data: syssetting.menuList
+    //     });
+    //   });
+    //   app.post('/api/syssetting/getSchoolList', function(req, res) {
+    //     res.json({
+    //       code: 0,
+    //       message: 'success',
+    //       data: syssetting.schoolList
+    //     });
+    //   });
+    //   app.post('/api/usercenter/getMenuList', function(req, res) {
+    //     res.json({
+    //       code: 0,
+    //       message: 'success',
+    //       data: usercenter.menuList
+    //     });
+    //   });
+    //   app.post('/api/usercenter/getSchoolList', function(req, res) {
+    //     res.json({
+    //       code: 0,
+    //       message: 'success',
+    //       data: usercenter.schoolList
+    //     });
+    //   });
+    // },
     clientLogLevel: 'warning', // 设置消息显示的级别
     historyApiFallback: {
       rewrites: [ // 如果找不到对应的页面时,跳转到对应的页面

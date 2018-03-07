@@ -1,0 +1,15 @@
+/**
+ * mock接口案例1
+ * @url /example-data
+ * Here you can write a detailed description
+ * of the parameters of the information.
+ */
+
+ {
+  "code|1": [0, 0, 0, 0, 1], // simulation error code, 1/5 probability of error code 1.
+  "data": {
+    "list|5": [
+      {"title": "@title", "info": "@sentence(3, 5)", "link": "@url"}
+    ]
+  }
+}
