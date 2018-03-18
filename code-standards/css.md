@@ -40,9 +40,11 @@
 ```
 
 ## 6. 属性声明顺序
-1. position （position、left、right等）
-2. box model 盒模型 （width、height、margin、padding）
-3. 其他 （line-height、border、background等）
+1. 定位：其中有的属性为：position z-index left right top bottom clip
+2. 盒子模型：其中属性为：width height min-height max-height min-width max-width(）
+3. 文字：其中属性有：color font-size letter-spacing, color- text-align等
+4. 背景：其中属性有：background-image border等
+5. 其他：一般有：animation, transition等
 
 ```css
     .element {

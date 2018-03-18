@@ -1,0 +1,134 @@
+@font-face {
+  font-family: 'icon-demo';
+  src:  url('../fonts/icon-demo.eot?rukk03');
+  src:  url('../fonts/icon-demo.eot?rukk03#iefix') format('embedded-opentype'),
+    url('../fonts/icon-demo.ttf?rukk03') format('truetype'),
+    url('../fonts/icon-demo.woff?rukk03') format('woff'),
+    url('../fonts/icon-demo.svg?rukk03#icon-demo') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icon-demo' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-SearchF9:before {
+  content: "\e906";
+}
+.icon-clearF9:before {
+  content: "\e907";
+}
+.icon-mineF9:before {
+  content: "\e912";
+}
+.icon-userF9:before {
+  content: "\f007";
+}
+.icon-refreshF9:before {
+  content: "\f021";
+}
+.icon-rollbackF9:before {
+  content: "\f064";
+}
+.icon-uniF083F9:before {
+  content: "\f083";
+}
+.icon-uniF091F9:before {
+  content: "\f091";
+}
+.icon-uniF0C9F9:before {
+  content: "\f0c9";
+}
+.icon-uniF0D1F9:before {
+  content: "\f0d1";
+}
+.icon-loadingF9:before {
+  content: "\f110";
+}
+.icon-uniF133F9:before {
+  content: "\f133";
+}
+.icon-tF9:before {
+  content: "\f174";
+}
+.icon-uniF1A1F9:before {
+  content: "\f1a1";
+}
+.icon-uniF1A2F9:before {
+  content: "\f1a2";
+}
+.icon-uniF1B3F9:before {
+  content: "\f1b3";
+}
+.icon-uniF1BAF9:before {
+  content: "\f1ba";
+}
+.icon-uniF1C0F9:before {
+  content: "\f1c0";
+}
+.icon-qqF9:before {
+  content: "\f1d6";
+}
+.icon-webchactF9:before {
+  content: "\f1d7";
+}
+.icon-uniF1DEF9:before {
+  content: "\f1de";
+}
+.icon-uniF1E3F9:before {
+  content: "\f1e3";
+}
+.icon-uniF1E5F9:before {
+  content: "\f1e5";
+}
+.icon-uniF1FEF9:before {
+  content: "\f1fe";
+}
+.icon-uniF200F9:before {
+  content: "\f200";
+}
+.icon-adidasF9:before {
+  content: "\f205";
+}
+.icon-add_circleF9:before {
+  content: "\e900";
+}
+.icon-arrow_liftF9:before {
+  content: "\e901";
+}
+.icon-check_circleF9:before {
+  content: "\e902";
+}
+.icon-closeF9:before {
+  content: "\e903";
+}
+.icon-favoriteF9:before {
+  content: "\e904";
+}
+.icon-keyboard_arrow_rightF9:before {
+  content: "\e905";
+}
+.icon-remove_circle_outlineF9:before {
+  content: "\e908";
+}
+.icon-shopping_cartF9:before {
+  content: "\e909";
+}
+.icon-thumb_downF9:before {
+  content: "\e90a";
+}
+.icon-thumb_upF9:before {
+  content: "\e90b";
+}
