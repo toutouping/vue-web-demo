@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import {mapActions, mapGetters} from 'vuex';
-import api from 'api/index';
+import userApi from 'api/user';
 import store from 'src/vuex/store.js';
 
 export default {
@@ -14,7 +14,7 @@ export default {
   },
   mounted () {
     this.$Progress.start(); // 显示进度条 http://hilongjw.github.io/vue-progressbar/index.html
-    api.getUserMenuList().then((res) => {
+    userApi.getUserMenuList().then((res) => {
       this.menuList = res.data;
       this.$Progress.finish();
     });

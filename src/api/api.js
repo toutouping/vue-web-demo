@@ -41,19 +41,9 @@ export const getSysSchoolList = params => {
   return service.post('/syssetting/getSchoolList', params).then(res => res.data);
 };
 
-export const getUserMenuList = params => {
-  return service.post('/usercenter/getMenuList', params).then(res => res.data);
-};
-
-export const getUserSchoolList = params => {
-  return service.post('/usercenter/getSchoolList', params).then(res => res.data);
-};
-
 let api = {
   getSysMenuList,
-  getSysSchoolList,
-  getUserMenuList,
-  getUserSchoolList
+  getSysSchoolList
 };
 
 export default api;

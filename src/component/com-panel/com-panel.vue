@@ -1,12 +1,12 @@
 <template>
-<div class="com-panel">
-	<div class="header" @click="toggle" >{{title}}</div>
-	<div class="content" ref="panel" v-show="showDetail">
-		<div class="detail">
-			<slot></slot>
-		</div>
-	</div>
-</div>
+  <div class="com-panel">
+    <div class="header" @click="toggle" >{{title}}</div>
+    <div class="content" ref="panel" v-show="showDetail">
+      <div class="detail">
+        <slot></slot>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script type="text/ecmascript-6">
