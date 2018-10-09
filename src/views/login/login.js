@@ -14,7 +14,7 @@ export default {
   created () {
     let lang = localStorage.getItem('langulage') || 'zh';
 
-    this.$i18n.locale = lang;
+    // this.$i18n.locale = lang;
     store.state.lang = lang;
     this.currentLang = lang;
   },
@@ -34,7 +34,7 @@ export default {
     },
     changeLangFn (lang) { // 切换语言
       this.currentLang = lang;
-      this.$i18n.locale = lang;
+      // this.$i18n.locale = lang;
       store.state.lang = lang;
     },
     keydownFn (event) {

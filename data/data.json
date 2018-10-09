@@ -19,13 +19,6 @@
       "children":[],
       "comp":"schollInfo",
       "url":"/schollInfo"
-    },{
-      "menuId": "id-4",
-      "menuNameCn":"提现管理",
-      "menuNameEn":"withdraw",
-      "children":[],
-      "comp":"withdraw",
-      "url":"/withdraw"
     }],
     "comp":"",
     "url":""
