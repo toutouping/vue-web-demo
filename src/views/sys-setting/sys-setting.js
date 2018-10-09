@@ -14,10 +14,32 @@ export default {
   },
   mounted () {
     this.$Progress.start(); // 显示进度条 http://hilongjw.github.io/vue-progressbar/index.html
-    api.getSysMenuList().then((res) => {
-      this.menuList = res.data;
-      this.$Progress.finish();
-    });
+    // api.getSysMenuList().then((res) => {
+    //   this.menuList = res.data;
+    //   this.$Progress.finish();
+    // });
+    this.menuList = [{
+      "menuId": "id-1",
+      "menuNameCn":"学校管理",
+      "menuNameEn":"Scholl",
+      "iconCls": "el-icon-location",
+      "children":[{
+        "menuId": "id-3",
+        "menuNameCn":"学校信息",
+        "children":[],
+        "comp":"schollInfo",
+        "url":"/schollInfo"
+      }],
+      "comp":"",
+      "url":""
+    },{
+      "menuId": "id-2",
+      "menuNameCn":"菜单二",
+      "iconCls": "el-icon-location",
+      "children":[],
+      "comp":"menu2",
+      "url":"menu2"
+    }];
   },
   methods: {
     ...mapActions([ // https://vuex.vuejs.org/zh-cn/actions.html

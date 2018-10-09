@@ -8,7 +8,7 @@ module.exports = {
  "code|1": [0, 0, 0, 0, 1], // simulation error code, 1/5 probability of error code 1.
  "message|1": ["success","success","success","success","fail"],
  "data": [{
-      "menuId": "id-2",
+      "menuId": "id-1",
       "menuNameCn":"学校管理",
       "menuNameEn":"Scholl",
       "iconCls": "el-icon-location",
@@ -22,6 +22,14 @@ module.exports = {
       }],
       "comp":"",
       "url":""
+    },{
+      "menuId": "id-2",
+      "menuNameCn":"菜单二",
+      "menuNameEn":"menu2",
+      "iconCls": "el-icon-location",
+      "children":[],
+      "comp":"menu2",
+      "url":"menu2"
     }
     ]
 }
