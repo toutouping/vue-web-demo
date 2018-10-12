@@ -38,7 +38,7 @@ export const getSysMenuList = params => {
 };
 
 export const getSysSchoolList = params => {
-  return service.post('/syssetting/getSchoolList', params).then(res => res.data);
+  return service.post('/syssetting/getSchoolList', params).then(res => {console.log(res); return res.data});
 };
 
 let api = {

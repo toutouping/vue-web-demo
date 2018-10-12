@@ -55,7 +55,7 @@ export default {
     ])
   },
   components: {
+    menu2: () => import('views/sys-setting/menu/menu.vue'),
     schollInfo: () => import('views/sys-setting/scholl-info/scholl-info.vue') // 异步组件
-
   }
 };
