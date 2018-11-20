@@ -17,22 +17,17 @@
                   v-if="!item.hidden">
                   <el-submenu v-if="item.children.length > 0" :index="item.menuId">
                       <template slot="title">
-                          <i :class="item.iconCls"></i>
-                          <template v-if="lang === 'zh'">{{item.menuNameCn}}</template>
-                          <template v-if="lang === 'en'">{{item.menuNameEn}}</template>
+                          <i :class="item.iconCls"></i>{{item.menuNameCn}}
                       </template>
                       <el-menu-item
                           v-for="(child, key) in item.children"
                           @click="sysAddTab(child)"
                           :key = "key" :index="child.menuId" v-if="!child.hidden">
-                            <template v-if="lang === 'zh'">{{child.menuNameCn}}</template>
-                            <template v-if="lang === 'en'">{{child.menuNameEn}}</template>
+                            {{child.menuNameCn}}
                           </el-menu-item>
                   </el-submenu>
                   <el-menu-item v-if="!item.children.length > 0" @click="sysAddTab(item)" :index="item.menuId">
-                    <i :class="item.iconCls"></i>
-                        <template v-if="lang === 'zh'">{{item.menuNameCn}}</template>
-                        <template v-if="lang === 'en'">{{item.menuNameEn}}</template>
+                    <i :class="item.iconCls"></i>{{item.menuNameCn}}
                   </el-menu-item>
               </template>
           </el-menu>
@@ -68,7 +63,7 @@
         </transition>
         <div class="default-page"
             v-if="getSysHomeTabs.length === 0">
-            <welcome-page></welcome-page>
+          <div>空白页面</div>
         </div>
       </section>
     </main>

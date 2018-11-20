@@ -1,21 +1,17 @@
 <template> <!-- 首页头部 -->
   <header class="header">
     <a href="" class="logo-content">
-      {{$t('header.sysName')}}
+      VUE案例系统
     </a>
     <el-menu :default-active="activeSysIndex" class="sys-menu" mode="horizontal" @select="handleSelect">
-      <el-menu-item index="sysSetting">{{$t('header.settingManage')}}</el-menu-item>
-      <el-menu-item index="userCenter">{{$t('header.userCenter')}}</el-menu-item>
-      <el-menu-item index="companyHelp">{{$t('header.companyHelp')}}</el-menu-item>
+      <el-menu-item index="sysSetting">配置管理</el-menu-item>
+      <el-menu-item index="companyHelp">企业帮助</el-menu-item>
     </el-menu>
     <el-dropdown @command="userOperationFn" class="user">
       <i class="user-icon"></i>
       <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item command="logout">{{$t('header.logout')}}</el-dropdown-item>
-        <el-dropdown-item command="setting">{{$t('header.setting')}}</el-dropdown-item>
-        <el-dropdown-item command="zh">{{$t('header.zh')}}</el-dropdown-item>
-        <el-dropdown-item command="en">{{$t('header.en')}}</el-dropdown-item>
-        <el-dropdown-item command="help">{{$t('header.help')}}</el-dropdown-item>
+        <el-dropdown-item command="logout">注销</el-dropdown-item>
+        <el-dropdown-item command="help">企业帮助</el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
   </header>
@@ -33,7 +29,7 @@
     created () {
       let lang = localStorage.getItem('langulage') || 'zh';
 
-      this.$i18n.locale = lang;
+      // this.$i18n.locale = lang;
       store.state.lang = lang;
     },
     computed: {
@@ -47,9 +43,6 @@
           case 'sysSetting':
             this.$router.push({path: '/sysSetting'});
             break;
-          case 'userCenter':
-            this.$router.push({path: '/userCenter'});
-            break;
           case 'companyHelp':
             this.$router.push({path: '/companyHelp'});
             break;
@@ -60,29 +53,13 @@
           case 'help':
             this._helpFn();
             break;
-          case 'setting':
-            this._settingFn();
-            break;
           case 'logout':
             this._logoutFn();
             break;
-          case 'zh':
-            localStorage.setItem('langulage', 'zh');
-            store.state.lang = 'zh';
-            this.$router.go(0);
-            break;
-          case 'en':
-            localStorage.setItem('langulage', 'en');
-            store.state.lang = 'en';
-            this.$router.go(0);
-            break;
         }
       },
-      _settingFn () {
-        console.log('setting');
-      },
       _helpFn () {
-        console.log('help');
+        this.$router.push({path: '/companyHelp'});
       },
       _logoutFn () {
         store.state.isLogin = false;

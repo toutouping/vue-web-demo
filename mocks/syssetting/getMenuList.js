@@ -9,14 +9,6 @@ module.exports = {
  "message|1": ["success","success","success","success","fail"],
  "data": [{
       "menuId": "id-1",
-      "menuNameCn":"基础管理",
-      "menuNameEn":"Base Manage",
-      "iconCls": "el-icon-location",
-      "children":[],
-      "comp":"baseManage",
-      "url":"/baseManage"
-    },{
-      "menuId": "id-2",
       "menuNameCn":"学校管理",
       "menuNameEn":"Scholl",
       "iconCls": "el-icon-location",
@@ -27,24 +19,17 @@ module.exports = {
         "children":[],
         "comp":"schollInfo",
         "url":"/schollInfo"
-      },{
-        "menuId": "id-4",
-        "menuNameCn":"提现管理",
-        "menuNameEn":"withdraw",
-        "children":[],
-        "comp":"withdraw",
-        "url":"/withdraw"
       }],
       "comp":"",
       "url":""
     },{
-      "menuId": "id-5",
-      "menuNameCn":"跑腿人",
-      "menuNameEn":"Runners",
+      "menuId": "id-2",
+      "menuNameCn":"菜单二",
+      "menuNameEn":"menu2",
       "iconCls": "el-icon-location",
       "children":[],
-      "comp":"runners",
-      "url":"/runners"
+      "comp":"menu2",
+      "url":"menu2"
     }
     ]
 }
