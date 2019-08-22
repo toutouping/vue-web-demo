@@ -5,5 +5,6 @@ export function getLanguage () {
   let lang = navigator.language || navigator.userLanguage;
 
   lang = lang.substr(0, 2);
-  return localStorage.getItem('web-language') || lang;
+  // return localStorage.getItem('web-language') || lang;
+  return 'zh';
 }

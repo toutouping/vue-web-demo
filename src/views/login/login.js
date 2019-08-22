@@ -2,17 +2,17 @@ import store from 'src/vuex/store.js';
 export default {
   data () {
     return {
-      userName: localStorage.getItem('loginName'),
+      userName: 'zh', // localStorage.getItem('loginName'),
       password: '',
       errMessage: '',
-      rememberFlag: localStorage.getItem('rememberFlag'),
+      rememberFlag: 'zh', // localStorage.getItem('rememberFlag'),
       langFlag: false,
       currentLang: '',
       random: Math.floor(Math.random(0, 1) * 3)
     };
   },
   created () {
-    let lang = localStorage.getItem('langulage') || 'zh';
+    let lang = 'zh'; // localStorage.getItem('langulage') || 'zh';
 
     this.$i18n.locale = lang;
     store.state.lang = lang;
@@ -44,9 +44,9 @@ export default {
     },
     _confirmLogin () {
       if (this.rememberFlag) { // 是否记住用户名
-        localStorage.setItem('loginName', this.userName);
+        // localStorage.setItem('loginName', this.userName);
       } else {
-        localStorage.removeItem('loginName');
+        // localStorage.removeItem('loginName');
       }
 
       if (!this.userName || !this.password) {

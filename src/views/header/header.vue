@@ -31,7 +31,8 @@
       };
     },
     created () {
-      let lang = localStorage.getItem('langulage') || 'zh';
+      // let lang = localStorage.getItem('langulage') || 'zh';
+      let lang = 'zh';
 
       this.$i18n.locale = lang;
       store.state.lang = lang;
