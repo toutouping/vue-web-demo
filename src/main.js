@@ -4,11 +4,11 @@ import VueProgressBar from 'vue-progressbar';  // 进度条
 import i18n from 'src/lang'; // 国际化
 import Element from 'element-ui'; // 引入element-ui组件
 import 'element-ui/lib/theme-chalk/index.css'; // 引入element-ui的样式
-import store from 'src/vuex/store.js';
+import store from 'src/store/index.js';
 import directive from 'src/directive'; // 引入自定义指令
 import App from './App';
-
 import 'common/stylus/index.styl';
+import jquery from 'jquery';
 
 Vue.config.productionTip = false;  // 关闭生产模式下给出的提示
 
@@ -21,6 +21,13 @@ Vue.use(directive);
 Vue.use(Element, {// 注册Element组件
   i18n: (key, value) => i18n.t(key, value)
 });
+
+window.jquery = window.$ = jquery;
+if (typeof window.gettext !== 'function') {
+  window.gettext = function gettext (string) {
+    return string;
+  };
+}
 
 /* eslint-disable no-new */
 new Vue({

@@ -1,4 +1,3 @@
-import store from 'src/vuex/store.js';
 export default {
   data () {
     return {
@@ -15,7 +14,7 @@ export default {
     let lang = 'zh'; // localStorage.getItem('langulage') || 'zh';
 
     this.$i18n.locale = lang;
-    store.state.lang = lang;
+    this.$store.state.lang = lang;
     this.currentLang = lang;
   },
   methods: {
@@ -35,7 +34,7 @@ export default {
     changeLangFn (lang) { // 切换语言
       this.currentLang = lang;
       this.$i18n.locale = lang;
-      store.state.lang = lang;
+      this.$store.state.lang = lang;
     },
     keydownFn (event) {
       if (event.keyCode === 13) {
@@ -53,7 +52,7 @@ export default {
         this.errMessage = this.$t('login.emptyMsg');
       } else if (this.userName === 'admin' && this.password === '123456') { // 判断用户名密码是否为空
         this.errMessage = '';
-        store.state.isLogin = true;
+        this.$store.state.isLogin = true;
         if (this.$route.query.redirect) { // 跳转到指定链接
           this.$router.push({path: this.$route.query.redirect});
         } else {

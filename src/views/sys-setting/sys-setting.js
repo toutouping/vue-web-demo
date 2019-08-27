@@ -1,8 +1,6 @@
-import Vue from 'vue';
 import {mapActions, mapGetters} from 'vuex';
 import api from 'api/index';
 import welcomePage from 'views/sys-setting/welcome-page/welcome-page';
-import store from 'src/vuex/store.js';
 
 export default {
   data () {

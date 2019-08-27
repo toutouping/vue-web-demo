@@ -15,7 +15,7 @@
               <template
                   v-for="(item, index) in menuList"
                   v-if="!item.hidden">
-                  <el-submenu v-if="item.children.length > 0" :index="item.menuId">
+                  <el-submenu v-if="item.children.length > 0" :index="item.menuId" :key="index">
                       <template slot="title">
                           <i :class="item.iconCls"></i>
                           <template v-if="lang === 'zh'">{{item.menuNameCn}}</template>
@@ -29,7 +29,8 @@
                             <template v-if="lang === 'en'">{{child.menuNameEn}}</template>
                           </el-menu-item>
                   </el-submenu>
-                  <el-menu-item v-if="!item.children.length > 0" @click="sysAddTab(item)" :index="item.menuId">
+                  <el-menu-item v-if="!item.children.length > 0" @click="sysAddTab(item)"
+                    :index="item.menuId" :key="index">
                     <i :class="item.iconCls"></i>
                         <template v-if="lang === 'zh'">{{item.menuNameCn}}</template>
                         <template v-if="lang === 'en'">{{item.menuNameEn}}</template>
@@ -58,7 +59,7 @@
           @tab-remove="sysRemoveTab"
           @tab-click="sysClickTab">
             <el-tab-pane
-                v-for="(item, index) in getSysHomeTabs"
+                v-for="item in getSysHomeTabs"
                 :label="item.title"
                 :name="item.name"
                 :key="item.id">

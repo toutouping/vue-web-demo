@@ -20,7 +20,9 @@ module.exports = {
         'array-bracket-spacing': ["error", "never"], // 禁止在数组括号内出现空格 ['a': 12]
         'arrow-spacing': ["error", {"before": true, "after": true}], // 箭头函数使用一致空格 a => b
         'block-spacing': ["error", "never"], // 禁止在单行代码块中使用空格 function foo() {return true;}
-        'camelcase': ["error", {"properties": "always"}], // 使用驼峰式命名，常量使用下划线
+        'camelcase': 'off', // ["error", {"properties": "always"}], // 使用驼峰式命名，常量使用下划线
+        'o-throw-literal': 'off',
+        'new-cap': 'off',
         'comma-dangle': ["error", "never"], // 禁用拖尾逗号 ['a': 1, 'b': 3],3后面不能有逗号
         'comma-spacing': ["error", { "before": false, "after": true }], // 强制在逗号周围使用空格 a = 1, b = 3; 前面不要有空格，后面有空格
         'computed-property-spacing': ["error", "never"], // 禁止在计算属性中使用空格 a['key']

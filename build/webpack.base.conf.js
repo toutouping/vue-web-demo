@@ -2,6 +2,7 @@
 const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
+const webpack = require('webpack')
 const vueLoaderConfig = require('./vue-loader.conf')
 
 function resolve (dir) {
@@ -44,7 +45,7 @@ module.exports = {
     在index.vue里面，正常引用A组件；如下：
     import A from '../../components/a.vue';
     如果设置了 alias后，那么引用的地方可以如下这样了
-    import A from '@/components/a.vue';
+    import A from 'src/components/a.vue';
     注意：这里的 @ 起到了 resolve('src')路径的作用了。
   */
   resolve: {
@@ -56,15 +57,14 @@ module.exports = {
       'pages': resolve('src/pages'),
       'views': resolve('src/views'),
       'common': resolve('src/common'),
-      'component': resolve('src/component')      
+      'component': resolve('src/component')
     }
   },
-
   // 如果需要引入jquery 或者 其他非npm安装的文件，参照https://segmentfault.com/a/1190000007020623
 
   /* loader 用于对模块的源代码进行转换。loader 可以使你在 import 或"加载"模块时预处理文件。
-  因此，loader 类似于其他构建工具中“任务(task)”，并提供了处理前端构建步骤的强大方法。loader 
-  可以将文件从不同的语言（如 TypeScript）转换为 JavaScript，或将内联图像转换为 data URL。loader 
+  因此，loader 类似于其他构建工具中“任务(task)”，并提供了处理前端构建步骤的强大方法。loader
+  可以将文件从不同的语言（如 TypeScript）转换为 JavaScript，或将内联图像转换为 data URL。loader
   甚至允许你直接在 JavaScript 模块中 import CSS文件！*/
   //『一切皆模块』是 webpack 的核心思想，而能够将一切资源都打包成模块的，是 loader，
   // loader 能够将所有文件都转换为 JavaScript 语言的模块，不管这个文件是什么类型、什么语言。
@@ -122,5 +122,11 @@ module.exports = {
     net: 'empty',
     tls: 'empty',
     child_process: 'empty'
-  }
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      jQuery: "jquery",
+      $: "jquery"
+    })
+  ]
 }

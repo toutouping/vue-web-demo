@@ -3,3 +3,7 @@
 /dist/
 /*.js
 /test/unit/coverage/
+static/**/*.js
+src/assets/js/*.js
+src/assets/bk-magic
+

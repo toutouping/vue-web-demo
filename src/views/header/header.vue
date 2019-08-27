@@ -7,6 +7,7 @@
       <el-menu-item index="sysSetting">{{$t('header.settingManage')}}</el-menu-item>
       <el-menu-item index="userCenter">{{$t('header.userCenter')}}</el-menu-item>
       <el-menu-item index="companyHelp">{{$t('header.companyHelp')}}</el-menu-item>
+      <el-menu-item index="flowTemplate">流程模板</el-menu-item>
     </el-menu>
     <el-dropdown @command="userOperationFn" class="user">
       <i class="user-icon"></i>
@@ -22,8 +23,6 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import store from 'src/vuex/store.js';
-
   export default {
     data () {
       return {
@@ -35,7 +34,7 @@
       let lang = 'zh';
 
       this.$i18n.locale = lang;
-      store.state.lang = lang;
+      this.$store.state.lang = lang;
     },
     computed: {
       activeSysIndex () {
@@ -54,6 +53,9 @@
           case 'companyHelp':
             this.$router.push({path: '/companyHelp'});
             break;
+          case 'flowTemplate':
+            this.$router.push({path: '/flowTemplate'});
+            break;
         }
       },
       userOperationFn (command) {
@@ -69,12 +71,12 @@
             break;
           case 'zh':
             localStorage.setItem('langulage', 'zh');
-            store.state.lang = 'zh';
+            this.$store.state.lang = 'zh';
             this.$router.go(0);
             break;
           case 'en':
             localStorage.setItem('langulage', 'en');
-            store.state.lang = 'en';
+            this.$store.state.lang = 'en';
             this.$router.go(0);
             break;
         }
@@ -86,7 +88,7 @@
         console.log('help');
       },
       _logoutFn () {
-        store.state.isLogin = false;
+        this.$store.state.isLogin = false;
         window.location.href = 'index.html';
         // this.$router.push('/login');
       }

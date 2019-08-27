@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import {mapActions, mapGetters} from 'vuex';
 import userApi from 'api/user';
-import store from 'src/vuex/store.js';
 
 export default {
   data () {
@@ -32,7 +31,7 @@ export default {
       'getUserHomeTabs'
     ]),
     currentMenu () {
-      return store.state.userCenter.homeCurrentTab;
+      return this.$store.state.userCenter.homeCurrentTab;
     }
   },
   components: {
