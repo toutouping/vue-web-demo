@@ -1,13 +1,18 @@
 <template>
-    <div class="text">
-        <div id="flowContainer" class="flow-container">
-            <template v-for="node in (data && data.nodeList) || []">
-                <div class="w" style="width: 30px; height: 30px; background: red;"
-                    :id="node.id"
-                    :key="node.id"
-                    :node="node"></div>
-            </template>
-        </div>
+    <div class="jsplumb-learn">
+      <div class="menu-content">
+        <node-menu ref="nodeMenu" @add-node="addNodeFn"></node-menu>
+      </div>
+      <div id="flowContainer" class="flow-container">
+        <template v-for="node in (data && data.nodeList) || []">
+            <node
+              v-show="node.show"
+              :id="node.id"
+              :node="node"
+              @change-node-site="changeNodeSite">
+            </node>
+        </template>
+      </div>
     </div>
 </template>
 <script type="text/ecmascript-6">
