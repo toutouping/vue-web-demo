@@ -4,12 +4,11 @@ import store from 'src/store/index.js';
 import NotFound from 'views/404.vue';
 import login from 'views/login/login.vue';
 import sysSetting from 'views/sys-setting/sys-setting.vue';
-// import companyHelp from 'views/company-help/company-help.vue';
 const companyHelp = resolve => require(['views/company-help/company-help.vue'], resolve);
-// import userCenter from 'views/user-center/user-center.vue';
 const userCenter = resolve => require(['views/user-center/user-center.vue'], resolve);
 // 异步加载：const meetVipRate =  resolve => require(['views/meet-vip-rate/meet-vip-rate.vue'], resolve);
 const flowTemplate = resolve => require(['views/flow-template/flow-template.vue'], resolve);
+const jsplumbLearn = resolve => require(['views/jsplumb-learn/jsplumb-learn.vue'], resolve);
 
 Vue.use(Router);
 
@@ -19,6 +18,16 @@ const router = new Router({
       path: '/login', /* 登录界面 */
       name: 'login',
       component: login/* ,hidden: true, // 自定义属性，在组件中可以通过 this.$route.hidden 获取值 */
+    },
+    {
+      path: '/jsplumbLearn', /* 登录界面 */
+      name: 'jsplumbLearn',
+      component: jsplumbLearn, /* this.$route.matched.filter(item => item.name) */
+      meta: {
+        keepAlive: false, /* 用于在 <keep-alive> 中使用，判断是否需要进行缓存 */
+        auth: true, /* 自定义属性，用于判断是否进行校验,在router.beforeEach中使用 */
+        title: '学习jsplumb' /* 可以通过$route.meta.title 后取当前的描述信息、菜单信息 */
+      }
     },
     {
       path: '/sysSetting', /* 首页 */

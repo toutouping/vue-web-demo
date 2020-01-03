@@ -7,6 +7,7 @@
       <el-menu-item index="sysSetting">{{$t('header.settingManage')}}</el-menu-item>
       <el-menu-item index="userCenter">{{$t('header.userCenter')}}</el-menu-item>
       <el-menu-item index="companyHelp">{{$t('header.companyHelp')}}</el-menu-item>
+      <el-menu-item index="jsplumbLearn">学习jsplumb</el-menu-item>
       <el-menu-item index="flowTemplate">流程模板</el-menu-item>
     </el-menu>
     <el-dropdown @command="userOperationFn" class="user">
@@ -52,6 +53,9 @@
             break;
           case 'companyHelp':
             this.$router.push({path: '/companyHelp'});
+            break;
+          case 'jsplumbLearn':
+            this.$router.push({path: '/jsplumbLearn'});
             break;
           case 'flowTemplate':
             this.$router.push({path: '/flowTemplate'});
