@@ -4,9 +4,11 @@ import data_A from './data_A.js';
 import $ from 'jquery';
 import nodeMenu from './node-menu/node-menu.vue';
 import node from './node.vue';
+import draggable from 'vuedraggable';
 
 export default {
   components: {
+    draggable,
     nodeMenu,
     node
   },

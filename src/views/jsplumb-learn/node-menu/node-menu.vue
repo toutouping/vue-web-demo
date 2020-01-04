@@ -9,7 +9,7 @@
           <!-- 可拖拽二级菜单 -->
           <el-menu-item-group>
             <draggable :sort="false" @end="addNodeFn" @choose="beginMoveFn"
-              v-model="menu.children" :options="draggableOptions">
+              v-model="menu.children" :group="{ name: 'people', put: false }" :options="draggableOptions">
               <el-menu-item v-for="son in menu.children"
                 :key="son.id"
                 :index="son.id"

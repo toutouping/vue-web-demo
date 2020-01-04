@@ -3,16 +3,18 @@
       <div class="menu-content">
         <node-menu ref="nodeMenu" @add-node="addNodeFn"></node-menu>
       </div>
-      <div id="flowContainer" class="flow-container">
-        <template v-for="node in (data && data.nodeList) || []">
-            <node
-              v-show="node.show"
-              :id="node.id"
-              :node="node"
-              @change-node-site="changeNodeSite">
-            </node>
-        </template>
-      </div>
+      <draggable :group="{ name: 'people', put: false }" class="flex-container">
+        <div id="flowContainer" class="flow-container">
+          <template v-for="node in (data && data.nodeList) || []">
+              <node
+                v-show="node.show"
+                :id="node.id"
+                :node="node"
+                @change-node-site="changeNodeSite">
+              </node>
+          </template>
+        </div>
+      </draggable>
     </div>
 </template>
 <script type="text/ecmascript-6">

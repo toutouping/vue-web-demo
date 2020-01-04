@@ -8,7 +8,7 @@
     }
     .main-content {
         display: flex;
-        min-height: calc(100vh - 115px);
+        height: calc(100vh - 115px);
         .left {
             width: 60px;
             background: #f2f2f2;
@@ -17,6 +17,9 @@
         .right {
             flex: 1;
             background: #e1e4e8;
+            .flow-contain {
+              height: 100%;
+            }
         }
     }
 }
