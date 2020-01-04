@@ -128,10 +128,8 @@ export default {
         this.jsPlumbInstance.makeSource(nodeId, this.jsplumbSourceOptions);
         // 设置目标点，其他源点拖出的线可以连接该节点
         this.jsPlumbInstance.makeTarget(nodeId, this.jsplumbTargetOptions);
-        // this.jsPlumbInstance.draggable(nodeId, {
-        //   containment: 'parent'
-        // });
-        flowUtils.setDraggable(this.jsPlumbInstance, nodeId, false);
+        // 限制节点的可拖动区域
+        flowUtils.draggable(this.jsPlumbInstance, nodeId, {containment: 'parent'});
       });
       console.log('-------------flow-template.js addNodeFn end---------');
     },
@@ -149,11 +147,8 @@ export default {
         this.jsPlumbInstance.makeSource(node.id, this.jsplumbSourceOptions);
         // // 设置目标点，其他源点拖出的线可以连接该节点
         this.jsPlumbInstance.makeTarget(node.id, this.jsplumbTargetOptions);
-
-        // this.jsPlumb.draggable(node.id, {
-        //   containment: 'parent'
-        // });
-        flowUtils.setDraggable(this.jsPlumbInstance, node.id, true);
+        // 限制节点的可拖动区域
+        flowUtils.draggable(this.jsPlumbInstance, node.id, {containment: 'parent'});
       }
 
       // 初始化连线
