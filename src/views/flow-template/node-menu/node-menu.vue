@@ -13,9 +13,9 @@
             :index="menu.id"
             :type="menu.type">
               <template slot="title">
-                  <span :title="menu.name">
-                    <i :class="menu.ico"></i>
-                  </span>
+                <span :title="menu.name">
+                  <i :class="menu.ico"></i>
+                </span>
               </template>
           </el-submenu>
        </draggable>

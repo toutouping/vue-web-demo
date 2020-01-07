@@ -1,10 +1,11 @@
 import {jsPlumb} from 'jsplumb';
-import lodash from 'lodash';
-// import $ from 'jquery';
+import $ from 'jquery';
+import './utils/flow.js';
 import nodeMenu from './node-menu/node-menu.vue';
-import node from './node.vue';
-import flowUtils from './utils/flow.js';
+import node from './node/node.vue';
 import draggable from 'vuedraggable';
+
+const ENDPOINT_DIRECTION = ['Top', 'Left', 'Right', 'Bottom'];
 
 export default {
   components: {
@@ -14,67 +15,53 @@ export default {
   },
   data () {
     return {
-      jsPlumbInstance: null,
+      dataFlowInstance: null,
       data: {
         nodeList: [],
         lineList: []
       },
-      // 默认设置参数
-      jsplumbSetting: {
-                // 动态锚点、位置自适应
-        Anchors: ['Top', 'TopCenter', 'TopRight', 'TopLeft', 'Right', 'RightMiddle', 'Bottom', 'BottomCenter', 'BottomRight', 'BottomLeft', 'Left', 'LeftMiddle'],
-        Container: 'flowContainer',
-                // 连线的样式 StateMachine、Flowchart
-        Connector: 'Flowchart',
-                // 鼠标不能拖动删除线
-        ConnectionsDetachable: false,
-                // 删除线的时候节点不删除
-        DeleteEndpointsOnDetach: false,
-                // 连线的端点
-                // Endpoint: ["Dot", {radius: 5}],
-        Endpoint: ['Rectangle', {height: 10, width: 10}],
-                // 线端点的样式
-        EndpointStyle: {fill: 'rgba(255,255,255,0)', outlineWidth: 1},
-        LogEnabled: true, // 是否打开jsPlumb的内部日志记录
-                // 绘制线
-        PaintStyle: {stroke: 'black', strokeWidth: 3},
-                // 绘制箭头
-        Overlays: [['Arrow', {width: 12, length: 12, location: 1}]],
-        RenderMode: 'svg'
-      },
-      jsplumbSourceOptions: {
-        /* "span"表示标签，".className"表示类，"#id"表示元素id */
-        filter: '.flow-node-drag',
-        filterExclude: false,
-        anchor: 'Continuous',
-        allowLoopback: false
-      },
-      jsplumbTargetOptions: {
-        /* "span"表示标签，".className"表示类，"#id"表示元素id */
-        filter: '.flow-node-drag',
-        filterExclude: false,
-        anchor: 'Continuous',
-        allowLoopback: false
+      isEdit: true,
+      opts: {
+        canvas: '#flow-contain', // 画布
+        locationConfig: {
+          start: ENDPOINT_DIRECTION,
+          end: ENDPOINT_DIRECTION,
+          task: ENDPOINT_DIRECTION
+          // startpoint: ENDPOINT_DIRECTION,
+          // endpoint: ENDPOINT_DIRECTION,
+          // parallelgateway: ENDPOINT_DIRECTION,
+          // convergegateway: ENDPOINT_DIRECTION,
+          // branchgateway: ENDPOINT_DIRECTION,
+          // tasknode: ENDPOINT_DIRECTION,
+          // subflow: ENDPOINT_DIRECTION
+        }, // 节点的类型和端点的位置
+        lineWidth: 3, // 线的宽度 默认为2
+        fillColor: '#348af3', // 高亮颜色
+        defaultColor: '#a9adb6', // 默认颜色
+        lineRadius: 1, // 线拐弯弧度
+        pointColor: 'rgba(52, 138, 243, 0.15)', // 端点的颜色
+        pointWidth: 3, // 连接端点的半径
+        pointDistance: 0, // 端点与线的距离
+        data: [], // 渲染的数据源,
+        id: 'node', // 配置渲染的节点id
+        isEdit: this.isEdit, // 是否编辑
+        dropElevent: null // 拖拽的数据源
       }
     };
-  },
-  created () {
   },
   mounted () {
     const ths = this;
 
-    // 获取jsPlumb的实例
-    ths.jsPlumbInstance = jsPlumb.getInstance();
-    // 导入默认配置
-    ths.jsPlumbInstance.importDefaults(ths.jsplumbSetting);
+    $('#flow-main-content').dataflow(this.opts);
+    this.dataFlowInstance = $('#flow-main-content').data('dataflow');
   },
   computed: {
   },
   methods: {
     // 返回唯一标识
-    getUUID () {
-      return Math.random().toString(36).substr(3, 10);
-    },
+    // getUUID () {
+    //   return Math.random().toString(36).substr(3, 10);
+    // },
     // 改变节点的位置
     changeNodeSite (data) {
       console.log('-------------flow-template.js 改变节点的位置changeNodeSite begin---------');
@@ -99,37 +86,41 @@ export default {
     addNodeFn (evt, nodeMenu, mousePosition) {
       console.log('-------------flow-template.js addNodeFn begin---------');
       console.log(evt, nodeMenu, mousePosition);
-      let width = this.$refs.nodeMenu.$el.clientWidth;
-      let nodeId = this.getUUID();
-      let left = mousePosition.left;
-      let top = mousePosition.top;
+      // let width = this.$refs.nodeMenu.$el.clientWidth;
+      const ths = this;
+      // let nodeId = this.getUUID();
+      let nodeId = ths.dataFlowInstance.generateNodeId();
 
-      if (left < 0) {
-        left = evt.originalEvent.layerX - width;
+      let parentX = document.getElementById('flow-contain').getBoundingClientRect().left;
+      let parentY = document.getElementById('flow-contain').getBoundingClientRect().top;
+      let left = evt.originalEvent.layerX - mousePosition.left;
+      let top = evt.originalEvent.layerY - mousePosition.top;
+
+      if (parentX > evt.originalEvent.clientX) {
+        // left = 0;
+        return;
       }
-      if (top < 0) {
-        top = evt.originalEvent.clientY - 50;
+      if (parentY > evt.originalEvent.clientY) {
+        // top = 0;
+        return;
       }
-      var node = {
+
+      let node = {
         id: nodeId,
         name: nodeId,
-        left: left + 'px',
-        top: top + 'px',
+        type: nodeMenu.type,
         ico: nodeMenu.ico,
-        show: true
+        x: left + 'px',
+        y: top + 'px'
       };
 
       console.log('生成新的node：');
       console.log(node);
       // 这里可以进行业务判断、是否能够添加该节点
-      this.data.nodeList.push(node);
-      this.$nextTick(function () {
-        // 设置源点，可以拖出线连接其他节点
-        this.jsPlumbInstance.makeSource(nodeId, this.jsplumbSourceOptions);
-        // 设置目标点，其他源点拖出的线可以连接该节点
-        this.jsPlumbInstance.makeTarget(nodeId, this.jsplumbTargetOptions);
-        // 限制节点的可拖动区域
-        flowUtils.draggable(this.jsPlumbInstance, nodeId, {containment: 'parent'});
+      ths.data.nodeList.push(node);
+      // 给节点增加flow功能
+      ths.$nextTick(function () {
+        ths.dataFlowInstance.createLocation(node);
       });
       console.log('-------------flow-template.js addNodeFn end---------');
     },
@@ -144,18 +135,18 @@ export default {
         const node = tempNodeList[i];
 
         // 设置源点，可以拖出线连接其他节点
-        this.jsPlumbInstance.makeSource(node.id, this.jsplumbSourceOptions);
+        this.dataFlowInstance.makeSource(node.id, this.jsplumbSourceOptions);
         // // 设置目标点，其他源点拖出的线可以连接该节点
-        this.jsPlumbInstance.makeTarget(node.id, this.jsplumbTargetOptions);
+        this.dataFlowInstance.makeTarget(node.id, this.jsplumbTargetOptions);
         // 限制节点的可拖动区域
-        flowUtils.draggable(this.jsPlumbInstance, node.id, {containment: 'parent'});
+        // flowUtils.draggable(this.dataFlowInstance, node.id, {containment: $('#flow-contain')});
       }
 
       // 初始化连线
       for (let i = 0; i < tempLineList.length; i++) {
         const line = tempLineList[i];
 
-        this.jsPlumbInstance.connect({
+        this.dataFlowInstance.connect({
           source: line.from,
           target: line.to
         }, this.jsplumbConnectOptions);

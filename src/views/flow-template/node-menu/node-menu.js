@@ -14,26 +14,34 @@ export default {
       // 菜单列表
       menuList: [
         {
-          id: '11',
-          type: 'timer',
-          name: '定时器',
-          ico: 'el-icon-time'
-        }, {
-          id: '12',
-          type: 'task',
-          name: '定时任务',
-          ico: 'el-icon-odometer'
+          id: '1',
+          type: 'start',
+          name: '开始',
+          ico: 'el-icon-video-play'
         },
         {
-          id: '21',
+          id: '2',
           type: 'end',
           name: '结束',
-          ico: 'el-icon-caret-right'
-        }, {
-          id: '22',
-          type: 'over',
-          name: '清理',
-          ico: 'el-icon-shopping-cart-full'
+          ico: 'el-icon-cpu'
+        },
+        {
+          id: '3',
+          type: 'task',
+          name: '任务',
+          ico: 'el-icon-folder'
+        },
+        {
+          id: '4',
+          type: 'task-branch',
+          name: '分支网关',
+          ico: 'el-icon-circle-plus-outline'
+        },
+        {
+          id: '5',
+          type: 'task-parallel',
+          name: '并行网关',
+          ico: 'el-icon-video-pause'
         }
       ],
       mousePosition: {
@@ -51,6 +59,12 @@ export default {
       var type = evt.item.attributes.type.nodeValue;
 
       ths.nodeMenu = ths.getMenu(type);
+
+      // 计算出鼠标相对点击元素的位置,e.clientX获取的是鼠标的位置，OffsetLeft是元素相对于外层元素的位置
+      this.mousePosition = {
+        left: evt.originalEvent.layerX, // evt.originalEvent.clientX - evt.item.offsetLeft,
+        top: evt.originalEvent.layerY // evt.originalEvent.clientY - evt.item.offsetTop
+      };
       console.log('-------------node-menu.js beginMoveFn end---------');
     },
     // 拖拽结束时触发
